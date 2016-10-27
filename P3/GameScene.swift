@@ -23,7 +23,7 @@ class GameScene: SKScene {
         
         // 1
         self.background.name = "background"
-        self.background.anchorPoint = CGPointZero
+        self.background.anchorPoint = CGPoint.zero
         // 2
         self.addChild(background)
         
@@ -44,41 +44,41 @@ class GameScene: SKScene {
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        let positionInScene = touch.locationInNode(self)
+        let positionInScene = touch.location(in: self)
         
         selectNodeForTouch(positionInScene)
     }
     
-    func degToRad(degree: Double) -> CGFloat {
+    func degToRad(_ degree: Double) -> CGFloat {
         return CGFloat(Double(degree) / 180.0 * M_PI)
     }
     
-    func selectNodeForTouch(touchLocation: CGPoint) {
+    func selectNodeForTouch(_ touchLocation: CGPoint) {
         // 1
-        let touchedNode = self.nodeAtPoint(touchLocation)
+        let touchedNode = self.atPoint(touchLocation)
         
         if touchedNode is SKSpriteNode {
             // 2
             if !selectedNode.isEqual(touchedNode) {
                 selectedNode.removeAllActions()
-                selectedNode.runAction(SKAction.rotateToAngle(0.0, duration: 0.1))
+                selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
                 
                 selectedNode = touchedNode as! SKSpriteNode
                 
                 // 3
                 if touchedNode.name! == kAnimalNodeName {
-                    let sequence = SKAction.sequence([SKAction.rotateByAngle(degToRad(-4.0), duration: 0.1),
-                        SKAction.rotateByAngle(0.0, duration: 0.1),
-                        SKAction.rotateByAngle(degToRad(4.0), duration: 0.1)])
-                    selectedNode.runAction(SKAction.repeatActionForever(sequence))
+                    let sequence = SKAction.sequence([SKAction.rotate(byAngle: degToRad(-4.0), duration: 0.1),
+                        SKAction.rotate(byAngle: 0.0, duration: 0.1),
+                        SKAction.rotate(byAngle: degToRad(4.0), duration: 0.1)])
+                    selectedNode.run(SKAction.repeatForever(sequence))
                 }
             }
         }
     }
     
-    func boundLayerPos(aNewPosition: CGPoint) -> CGPoint {
+    func boundLayerPos(_ aNewPosition: CGPoint) -> CGPoint {
         let winSize = self.size
         var retval = aNewPosition
         retval.x = CGFloat(min(retval.x, 0))
@@ -88,7 +88,7 @@ class GameScene: SKScene {
         return retval
     }
     
-    func panForTranslation(translation: CGPoint) {
+    func panForTranslation(_ translation: CGPoint) {
         let position = selectedNode.position
         
         if selectedNode.name! == kAnimalNodeName {
@@ -99,10 +99,10 @@ class GameScene: SKScene {
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        let positionInScene = touch.locationInNode(self)
-        let previousPosition = touch.previousLocationInNode(self)
+        let positionInScene = touch.location(in: self)
+        let previousPosition = touch.previousLocation(in: self)
         let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
         
         panForTranslation(translation)
