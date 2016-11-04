@@ -13,6 +13,7 @@ class Card: SKSpriteNode {
     let cardType : String
     let frontTexture : SKTexture
     let backTexture : SKTexture
+    let revealAnimationTime : TimeInterval
     var gamePosition : CGPoint
     var faceUp : Bool
     var beingViewed : Bool
@@ -25,12 +26,18 @@ class Card: SKSpriteNode {
         self.cardType = cardType
         backTexture = SKTexture(imageNamed: "card_back")
         frontTexture = SKTexture(imageNamed: cardType)
+        revealAnimationTime = 1.5
         gamePosition = CGPoint()
         faceUp = false
         beingViewed = false
         
         super.init(texture: backTexture, color: .clear, size: frontTexture.size())
                 
+    }
+    
+    // Returns the time it takes this card's reveal animation to complete
+    func getRevealAnimationTime() -> TimeInterval {
+        return revealAnimationTime
     }
     
     // Flips a card over
@@ -64,45 +71,58 @@ class Card: SKSpriteNode {
         }
     }
     
-    func reveal() {
-        let totalAnimationTime = 0.4
-        let screenWidth = self.parent?.frame.size.width
-        let screenHeight = self.parent?.frame.size.height
+    func revealCard() -> SKAction {
+        return SKAction.run {
+            let viewCardTime: TimeInterval = self.revealAnimationTime * (3/4)
+            let animateCardTime: TimeInterval = self.revealAnimationTime * (1/4)
         
-        // Move card to center of screen
-        let moveToCenter = SKAction.move(to: CGPoint(x: screenWidth!/2, y: screenHeight!/2), duration: totalAnimationTime)
-        
-        // Grow card to double size
-        let doubleSize = SKAction.scale(to: 3.0, duration: totalAnimationTime)
-        
-        // Flip card's texture from back to front
-        let flipCard = self.flipCard()
-        let flipDelay = SKAction.wait(forDuration: totalAnimationTime/2)
-        let delayedFlip = SKAction.sequence([flipDelay, flipCard])
-        
-        
-        // Give card priority in view
-        let givePriority = movingPriority()
-        
-        // Complete card reveal
-        let revealCard = SKAction.group([moveToCenter, delayedFlip, doubleSize])
-        
-        // Animate
-        let finalSequence = SKAction.sequence([givePriority, revealCard])
-        self.run(finalSequence)
-        
-        beingViewed = true
+            let revealCard = self.reveal(animationTime: animateCardTime)
+            let viewCard = SKAction.wait(forDuration: viewCardTime)
+            let returnCard = self.returnToLocation(animationTime: animateCardTime)
+            let cardRevealSequence = SKAction.sequence([revealCard, viewCard, returnCard])
+            self.run(cardRevealSequence)
+        }
     }
     
-    func returnToLocation() -> SKAction {
+    private func reveal(animationTime: TimeInterval) -> SKAction {
         return SKAction.run {
-        let totalAnimationTime = 0.4
+            let screenWidth = self.parent?.frame.size.width
+            let screenHeight = self.parent?.frame.size.height
+        
+            // Move card to center of screen
+            let moveToCenter = SKAction.move(to: CGPoint(x: screenWidth!/2, y: screenHeight!/2), duration: animationTime)
+        
+            // Grow card to double size
+            let doubleSize = SKAction.scale(to: 3.0, duration: animationTime)
+        
+            // Flip card's texture from back to front
+            let flipCard = self.flipCard()
+            let flipDelay = SKAction.wait(forDuration: animationTime/2)
+            let delayedFlip = SKAction.sequence([flipDelay, flipCard])
+        
+            // Complete card reveal
+            let revealCard = SKAction.group([moveToCenter, delayedFlip, doubleSize])
+        
+            // Give card priority in view
+            let givePriority = self.movingPriority()
+        
+            // Animate
+            let finalSequence = SKAction.sequence([givePriority, revealCard])
+            self.run(finalSequence)
+        
+            self.beingViewed = true
+        }
+    }
+    
+    private func returnToLocation(animationTime: TimeInterval) -> SKAction {
+        return SKAction.run {
+        let animationTime = 0.4
         
         // Move back to initial location
-        let returnToStartingLocation = SKAction.move(to: self.gamePosition, duration: totalAnimationTime)
+        let returnToStartingLocation = SKAction.move(to: self.gamePosition, duration: animationTime)
         
         // Shrink back to normal size
-        let returnToStartingSize = SKAction.scale(to: 1.0, duration: totalAnimationTime)
+        let returnToStartingSize = SKAction.scale(to: 1.0, duration: animationTime)
         
         // Revoke priority in view
         let revokePriority = self.standardPriority()

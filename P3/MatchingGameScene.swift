@@ -20,11 +20,12 @@ class MatchingGameScene: SKScene {
         super.init(size: size)
         
         // Define basic variables
-        let cardList = ["caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera"]
-        let cardCount = cardList.count
+        let cardImageList = ["caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera"]
+        var generatedCards : [Card] = []
+        let cardCount = 8
         let screenSize = self.frame.size
         let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
+        //let screenHeight = screenSize.height
         
         // Create background
         self.background.name = "background"
@@ -33,34 +34,52 @@ class MatchingGameScene: SKScene {
         self.addChild(background)
         self.background.zPosition = cardPriority.background
         
-        // Create cards
+        // Create cards in array
         for i in 0..<cardCount {
             
             // Set up card
-            let card = Card(cardType: cardList[i])
+            let card = Card(cardType: cardImageList[i])
             let cardSizeRatio = card.size.height/card.size.width
             print ("\(cardSizeRatio)")
             let cardWidth = screenWidth/CGFloat(cardCount/2+1)
             let cardHeight = cardWidth*cardSizeRatio*0.9
-            let xOffset = (CGFloat(i) < CGFloat(cardCount)/2) ? CGFloat(0.25) : CGFloat(0.75)
-            let yOffset = (i < 4) ? CGFloat(CGFloat((i)+1)/((CGFloat(cardCount)/2.0)+1.0)) : CGFloat(CGFloat(i-3)/((CGFloat(cardCount)/2)+1.0))
             card.size = CGSize(width: cardWidth, height: cardHeight)
-            card.position = CGPoint(x: size.width/2 * xOffset, y: size.height * yOffset)
-            card.gamePosition = card.position
             card.zPosition = cardPriority.standard
             card.name = "\(i)"
             
             // Set up card match
-            let cardMatch = Card(cardType: cardList[i])
+            let cardMatch = Card(cardType: cardImageList[i])
             cardMatch.size = card.size
-            cardMatch.position = CGPoint(x: card.position.x+screenWidth/2, y: card.position.y)
-            cardMatch.gamePosition = cardMatch.position
             card.zPosition = cardPriority.standard
             cardMatch.name = card.name
             
             // Add cards to scene
-            self.addChild(card)
-            self.addChild(cardMatch)
+            generatedCards.append(card)
+            generatedCards.append(cardMatch)
+
+        }
+        
+        // Randomize card array
+        //TODO: Move this code and the code in alphabet to method in utilites
+        for i in 0..<cardCount {
+            let rand = Int(arc4random_uniform(UInt32(cardCount)))
+            let randomCardToSwap = generatedCards[rand]
+            generatedCards[rand] = generatedCards[i]
+            generatedCards[i] = randomCardToSwap
+        }
+        
+        // Place cards on screen
+        for i in 0..<cardCount {
+            let card = generatedCards[i]
+            let parallelCard = generatedCards[i+cardCount]
+            let xOffset = (CGFloat(i) < CGFloat(cardCount)/2) ? CGFloat(0.25) : CGFloat(0.75)
+            let yOffset = (i < 4) ? CGFloat(CGFloat((i)+1)/((CGFloat(cardCount)/2.0)+1.0)) : CGFloat(CGFloat(i-3)/((CGFloat(cardCount)/2)+1.0))
+            card.position = CGPoint(x: size.width/2 * xOffset, y: size.height * yOffset)
+            card.gamePosition = card.position
+            parallelCard.position = CGPoint(x: card.position.x+screenWidth/2, y: card.position.y)
+            parallelCard.gamePosition = parallelCard.position
+            self.background.addChild(card)
+            self.background.addChild(parallelCard)
         }
     }
     
@@ -100,17 +119,22 @@ class MatchingGameScene: SKScene {
             let card: Card = touchedNode as! Card
 
             //TODO: If a card is being viewed, return it to original position from touch ANYWHERE on screen
-            if card.beingViewed {
+            //if card.beingViewed {
                 
-                let moveCardBack = card.returnToLocation()
+                //let moveCardBack = card.returnToLocation()
+                //let checkForMatch = pair.handlePossibleMatch(newCard: card)
+                //self.run(SKAction.sequence([moveCardBack, checkForMatch]))
+                
+            //} else if !card.beingViewed && !card.faceUp {
+            if !card.faceUp {
+                let revealCard = card.revealCard()
+                let waitForAnimationCompletion = SKAction.wait(forDuration: card.getRevealAnimationTime())
                 let checkForMatch = pair.handlePossibleMatch(newCard: card)
-                self.run(SKAction.sequence([moveCardBack, checkForMatch]))
-                
-            } else if !card.beingViewed && !card.faceUp {
-                
-                card.reveal()
-                
+                let handleCardFlip = SKAction.sequence([revealCard, waitForAnimationCompletion, checkForMatch])
+                self.run(handleCardFlip)
             }
+
+            //}
         }
 
     }

@@ -12,7 +12,7 @@ import SpriteKit
 // Define zPositions for matching game
 struct cardPriority {
     static let background: CGFloat = 0.0
-    static let standard  : CGFloat = 1.0
+    static let standard  : CGFloat = 5.0
     static let moving    : CGFloat = 10.0
 }
 
