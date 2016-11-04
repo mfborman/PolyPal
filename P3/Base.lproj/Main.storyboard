@@ -1,30 +1,235 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
+        <!--Alphabet Game View Controller-->
+        <scene sceneID="ihu-tX-jMG">
+            <objects>
+                <viewController id="Bem-m5-yye" customClass="AlphabetGameViewController" customModule="P3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="igK-Qw-dm7"/>
+                        <viewControllerLayoutGuide type="bottom" id="sah-bj-Dhv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1ff-eO-mSZ" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6c-aq-cQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1453" y="34"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="v5z-X4-uy9">
+            <objects>
+                <viewController id="nuJ-47-VJY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zFp-lu-Tf1"/>
+                        <viewControllerLayoutGuide type="bottom" id="MYA-H9-Yzs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="csP-qZ-8zB">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqa-jW-dLc">
+                                <frame key="frameInset" minX="561" minY="20" width="410" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tqa-jW-dLc" secondAttribute="height" multiplier="41:36" id="bqX-9J-8ax"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
+                                <state key="normal" backgroundImage="memory_button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mh9-ub-Jwz" kind="show" id="YNd-i6-01x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy6-CU-bIu">
+                                <frame key="frameInset" minX="561" minY="388" width="410" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Zy6-CU-bIu" secondAttribute="height" multiplier="41:36" id="e1j-cO-4D5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
+                                <state key="normal" backgroundImage="num_let_button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Bem-m5-yye" kind="show" id="rdv-Xh-AQU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw0-mt-ebU">
+                                <frame key="frameInset" minX="47" minY="388" width="410" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cw0-mt-ebU" secondAttribute="height" multiplier="41:36" id="3dN-VF-kMK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
+                                <state key="normal" backgroundImage="shapes_button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iTk-wN-ZOM" kind="presentation" id="8tT-Hq-bYR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBX-AX-5nB">
+                                <frame key="frameInset" minX="47" minY="20" width="410" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aBX-AX-5nB" secondAttribute="height" multiplier="41:36" id="byb-8Z-8YS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
+                                <state key="normal" backgroundImage="animals_button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="Kne-Tt-P05"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="aBX-AX-5nB" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="0.5" id="9oU-Ci-Uho"/>
+                            <constraint firstItem="cw0-mt-ebU" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="F4a-U8-fco"/>
+                            <constraint firstItem="tqa-jW-dLc" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="Fdh-XI-w5Y"/>
+                            <constraint firstItem="cw0-mt-ebU" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="1.5" id="HP0-Oh-kNw"/>
+                            <constraint firstItem="Zy6-CU-bIu" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="Nfa-4T-xte"/>
+                            <constraint firstItem="tqa-jW-dLc" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="1.45" id="Q5f-Tg-LAf"/>
+                            <constraint firstItem="tqa-jW-dLc" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="0.5" id="Scs-md-a13"/>
+                            <constraint firstItem="cw0-mt-ebU" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="0.55" id="esq-wV-nJZ"/>
+                            <constraint firstItem="aBX-AX-5nB" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="0.55" id="gBK-E2-qX7"/>
+                            <constraint firstItem="Zy6-CU-bIu" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="1.5" id="iyz-NV-WMn"/>
+                            <constraint firstItem="aBX-AX-5nB" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="lk8-92-VDi"/>
+                            <constraint firstItem="Zy6-CU-bIu" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="1.45" id="uti-xR-NAr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rk9-6c-qKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-632" y="34"/>
+        </scene>
+        <!--Shape Game View Controller-->
+        <scene sceneID="aQ7-xk-Pe1">
+            <objects>
+                <viewController id="iTk-wN-ZOM" customClass="ShapeGameViewController" customModule="P3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z8D-1j-gcg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qcf-Zy-PRS"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hzX-dw-6Ep" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvy-69-x4P">
+                                <frame key="frameInset" minX="20" minY="648" width="154" height="100"/>
+                                <state key="normal" backgroundImage="back_btn"/>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="presentation" id="iaA-As-onU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nvy-69-x4P" firstAttribute="height" secondItem="hzX-dw-6Ep" secondAttribute="height" multiplier="0.16" id="7CD-Dw-WBh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Nvy-69-x4P" secondAttribute="leading" id="Zlk-l7-LKh"/>
+                            <constraint firstItem="Qcf-Zy-PRS" firstAttribute="top" secondItem="Nvy-69-x4P" secondAttribute="bottom" constant="20" id="bDf-VB-LHk"/>
+                            <constraint firstItem="Nvy-69-x4P" firstAttribute="width" secondItem="hzX-dw-6Ep" secondAttribute="width" multiplier="0.16" id="wkR-tY-4iR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hN-Km-wyM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-632" y="879"/>
+        </scene>
+        <!--Animal Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="P3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="AnimalGameViewController" customModule="P3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6E-rz-BHq">
+                                <frame key="frameInset" minX="20" minY="648" width="154" height="100"/>
+                                <state key="normal" backgroundImage="back_btn"/>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="show" id="TFI-qj-XN8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="T6E-rz-BHq" secondAttribute="leading" id="Br6-CC-dib"/>
+                            <constraint firstItem="T6E-rz-BHq" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" multiplier="0.16" id="F7o-hN-hZi"/>
+                            <constraint firstItem="T6E-rz-BHq" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.16" id="Gne-Vs-IRc"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="T6E-rz-BHq" secondAttribute="bottom" constant="20" id="S9G-lh-Cne"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="c6A-bu-ECJ"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="NSB-Yf-KV0" kind="unwind" identifier="returnToHomeScreen" unwindAction="returnToHomeScreenWithSender:" id="Io4-IT-vXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <exit id="NSB-Yf-KV0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="-632" y="-819"/>
+        </scene>
+        <!--Matching Game View Controller-->
+        <scene sceneID="W04-3o-31q">
+            <objects>
+                <viewController id="mh9-ub-Jwz" customClass="MatchingGameViewController" customModule="P3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="son-0f-jRm"/>
+                        <viewControllerLayoutGuide type="bottom" id="hFv-SU-9Oe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MzH-yg-4ur" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-Va-tMy">
+                                <frame key="frameInset" minX="20" minY="648" width="154" height="100"/>
+                                <state key="normal" backgroundImage="back_btn"/>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="show" id="4rV-aY-aoJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hFv-SU-9Oe" firstAttribute="top" secondItem="FbA-Va-tMy" secondAttribute="bottom" constant="20" id="85Z-AB-9VE"/>
+                            <constraint firstItem="FbA-Va-tMy" firstAttribute="width" secondItem="MzH-yg-4ur" secondAttribute="width" multiplier="0.16" id="Sx0-HW-4fW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="FbA-Va-tMy" secondAttribute="leading" id="exg-yD-ZTD"/>
+                            <constraint firstItem="FbA-Va-tMy" firstAttribute="height" secondItem="MzH-yg-4ur" secondAttribute="height" multiplier="0.16" id="yBk-GD-jbu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dI2-Kr-WE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="261" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="animals_button" width="580" height="580"/>
+        <image name="back_btn" width="100" height="100"/>
+        <image name="memory_button" width="580" height="580"/>
+        <image name="num_let_button" width="580" height="580"/>
+        <image name="shapes_button" width="580" height="580"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TFI-qj-XN8"/>
+    </inferredMetricsTieBreakers>
 </document>
