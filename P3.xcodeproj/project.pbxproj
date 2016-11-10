@@ -32,6 +32,7 @@
 		A21D1A141DCBC9160028C430 /* AlphabetGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21D1A131DCBC9160028C430 /* AlphabetGameScene.swift */; };
 		A21D1A161DCBC9250028C430 /* AlphabetGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21D1A151DCBC9250028C430 /* AlphabetGameViewController.swift */; };
 		A222F9371DCA4E0A00AED002 /* animalVictorySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A222F9361DCA4E0A00AED002 /* animalVictorySound.mp3 */; };
+		A2A27EFB1DD22BF600107E3F /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A27EFA1DD22BF600107E3F /* GameBoard.swift */; };
 		A2B5DDFC1DCA8E5C001CCD22 /* MatchingGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5DDFB1DCA8E5C001CCD22 /* MatchingGameScene.swift */; };
 		A2DD64B11DC2FD0000D0C073 /* ShapeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD64B01DC2FD0000D0C073 /* ShapeGameViewController.swift */; };
 		A2DD64B31DC3003D00D0C073 /* ShapeGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD64B21DC3003D00D0C073 /* ShapeGameScene.swift */; };
@@ -86,6 +87,7 @@
 		A21D1A131DCBC9160028C430 /* AlphabetGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetGameScene.swift; sourceTree = "<group>"; };
 		A21D1A151DCBC9250028C430 /* AlphabetGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetGameViewController.swift; sourceTree = "<group>"; };
 		A222F9361DCA4E0A00AED002 /* animalVictorySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = animalVictorySound.mp3; sourceTree = "<group>"; };
+		A2A27EFA1DD22BF600107E3F /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		A2B5DDFB1DCA8E5C001CCD22 /* MatchingGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingGameScene.swift; sourceTree = "<group>"; };
 		A2DD64B01DC2FD0000D0C073 /* ShapeGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeGameViewController.swift; sourceTree = "<group>"; };
 		A2DD64B21DC3003D00D0C073 /* ShapeGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeGameScene.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				A21D1A041DCA8F220028C430 /* MatchingGameViewController.swift */,
 				A21D1A0B1DCA91F70028C430 /* Card.swift */,
 				A21D1A111DCB04890028C430 /* CardPair.swift */,
+				A2A27EFA1DD22BF600107E3F /* GameBoard.swift */,
 			);
 			name = "Matching Game";
 			sourceTree = "<group>";
@@ -305,7 +308,9 @@
 				TargetAttributes = {
 					57EDB4F21DC2A9140074E85C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4N9355948S;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
 					};
 					57EDB50A1DC2A9140074E85C = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -385,6 +390,7 @@
 				57EDB4FB1DC2A9140074E85C /* AnimalGameScene.swift in Sources */,
 				57EDB4FD1DC2A9140074E85C /* AnimalGameViewController.swift in Sources */,
 				A21D1A051DCA8F220028C430 /* MatchingGameViewController.swift in Sources */,
+				A2A27EFB1DD22BF600107E3F /* GameBoard.swift in Sources */,
 				A2DD64B11DC2FD0000D0C073 /* ShapeGameViewController.swift in Sources */,
 				A21D1A141DCBC9160028C430 /* AlphabetGameScene.swift in Sources */,
 				A2B5DDFC1DCA8E5C001CCD22 /* MatchingGameScene.swift in Sources */,
@@ -468,9 +474,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -516,9 +524,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -542,6 +552,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4N9355948S;
 				INFOPLIST_FILE = P3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Tony-Branson.P3";
@@ -555,6 +567,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4N9355948S;
 				INFOPLIST_FILE = P3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Tony-Branson.P3";

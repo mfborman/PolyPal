@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -40,12 +43,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqa-jW-dLc">
-                                <frame key="frameInset" minX="561" minY="20" width="410" height="360"/>
+                                <rect key="frame" x="561" y="20" width="410" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tqa-jW-dLc" secondAttribute="height" multiplier="41:36" id="bqX-9J-8ax"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
-                                <state key="normal" backgroundImage="memory_button">
+                                <state key="normal" backgroundImage="brain_btn">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -53,12 +56,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy6-CU-bIu">
-                                <frame key="frameInset" minX="561" minY="388" width="410" height="360"/>
+                                <rect key="frame" x="561" y="388" width="410" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Zy6-CU-bIu" secondAttribute="height" multiplier="41:36" id="e1j-cO-4D5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
-                                <state key="normal" backgroundImage="num_let_button">
+                                <state key="normal" backgroundImage="letters_btn">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -66,12 +69,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw0-mt-ebU">
-                                <frame key="frameInset" minX="47" minY="388" width="410" height="360"/>
+                                <rect key="frame" x="47" y="388" width="410" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cw0-mt-ebU" secondAttribute="height" multiplier="41:36" id="3dN-VF-kMK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
-                                <state key="normal" backgroundImage="shapes_button">
+                                <state key="normal" backgroundImage="shapes_btn">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -79,12 +82,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBX-AX-5nB">
-                                <frame key="frameInset" minX="47" minY="20" width="410" height="360"/>
+                                <rect key="frame" x="47" y="20" width="410" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aBX-AX-5nB" secondAttribute="height" multiplier="41:36" id="byb-8Z-8YS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="72"/>
-                                <state key="normal" backgroundImage="animals_button">
+                                <state key="normal" backgroundImage="animals_btn">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -127,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvy-69-x4P">
-                                <frame key="frameInset" minX="20" minY="648" width="154" height="100"/>
+                                <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="iaA-As-onU"/>
@@ -160,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6E-rz-BHq">
-                                <frame key="frameInset" minX="20" minY="648" width="154" height="100"/>
+                                <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
                                     <segue destination="nuJ-47-VJY" kind="show" id="TFI-qj-XN8"/>
@@ -201,7 +204,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-Va-tMy">
-                                <frame key="frameInset" minX="20" minY="648" width="154" height="100"/>
+                                <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
                                     <segue destination="nuJ-47-VJY" kind="show" id="4rV-aY-aoJ"/>
@@ -223,11 +226,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="animals_button" width="580" height="580"/>
+        <image name="animals_btn" width="450" height="450"/>
         <image name="back_btn" width="100" height="100"/>
-        <image name="memory_button" width="580" height="580"/>
-        <image name="num_let_button" width="580" height="580"/>
-        <image name="shapes_button" width="580" height="580"/>
+        <image name="brain_btn" width="450" height="450"/>
+        <image name="letters_btn" width="450" height="450"/>
+        <image name="shapes_btn" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TFI-qj-XN8"/>

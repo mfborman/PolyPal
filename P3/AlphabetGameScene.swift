@@ -124,12 +124,7 @@ class AlphabetGameScene: SKScene {
         }
         
         // Randomize array
-        for i in 0..<quiz {
-            let rand = Int(arc4random_uniform(UInt32(quiz)))
-            let randomLetterToSwap = quizOnScreen[rand]
-            quizOnScreen[rand] = quizOnScreen[i]
-            quizOnScreen[i] = randomLetterToSwap
-        }
+        randomizeArray(&quizOnScreen)
         
         //Generates the shape sprites on the screen
         for i in 0..<quiz {

@@ -23,3 +23,13 @@ struct depth {
     static let label         : CGFloat = 2.0
     static let animal        : CGFloat = 3.0
 }
+
+// Randomizes an array
+func randomizeArray<T>(_ array: inout [T]) {
+    for i in 0..<array.count {
+        let randomIndex = Int(arc4random_uniform(UInt32(array.count)))
+        let value = array[randomIndex]
+        array[randomIndex] = array[i]
+        array[i] = value
+    }
+}
