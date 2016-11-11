@@ -185,7 +185,7 @@ class AnimalGameScene: SKScene {
      */
     func correctAnimalPlacement(animal: SKSpriteNode, barn: SKSpriteNode) {
         
-        let animationTime = 0.8
+        let animationTime = 0.6
         
         // Move animal to barn door
         let barnLocation = barn.position
@@ -226,7 +226,7 @@ class AnimalGameScene: SKScene {
      */
     func incorrectAnimalPlacement(animal: SKSpriteNode, previousLocation: CGPoint) {
         
-        let animationTime = 0.7
+        let animationTime = 0.5
         
         // Move animal back to starting location
         let animalLocation = animal.position

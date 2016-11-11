@@ -12,9 +12,12 @@ import Foundation
 class MatchingGameScene: SKScene {
     
     var pair : CardPair
+    var nilCard = Card(cardType: "")
+    var selectedCard: Card
     
     override init(size: CGSize) {
         pair = CardPair()
+        selectedCard = nilCard
 
         super.init(size: size)
         
@@ -29,14 +32,18 @@ class MatchingGameScene: SKScene {
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
+        // Create the game board
+        let gameBoard = GameBoard(width: screenWidth, height: screenHeight, rowCount: rowSize, columnCount: columnSize
+        )
+        
         // Create cards in array
         for i in 0..<uniqueCardCount {
             
             // Set up card
             let card = Card(cardType: cardImageList[i])
-            //Ration based on image...let cardSizeRatio = card.size.height/card.size.width
+            //TODO: Remake cards to match ratios of screen so we don't have to 
             let cardSizeRatio = screenHeight/screenWidth
-            let cardWidth = screenWidth/CGFloat(uniqueCardCount/2)
+            let cardWidth = gameBoard.width/CGFloat(rowSize)
             let cardHeight = cardWidth*cardSizeRatio
             card.size = CGSize(width: cardWidth, height: cardHeight)
             card.zPosition = cardPriority.standard
@@ -57,10 +64,8 @@ class MatchingGameScene: SKScene {
         // Randomize the array so that the cards will be shuffled on the board
         randomizeArray(&generatedCards)
         
-        let gameBoard = GameBoard(board: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), rowCount: rowSize, columnCount: columnSize
-        )
+        gameBoard.fillWithCards(cardList: generatedCards)
         self.addChild(gameBoard)
-        (self.childNode(withName: "gameBoard") as! GameBoard).fillWithCards(cardList: generatedCards)
 
     }
     
@@ -73,18 +78,16 @@ class MatchingGameScene: SKScene {
         let positionInScene = touch.location(in: self)
         let touchedNode = self.atPoint(positionInScene)
         let accentDuration = 0.1
+        
         if touchedNode is Card {
             let card: Card = touchedNode as! Card
-            // If viewing card pop-up
-            if card.beingViewed {
-                card.run(SKAction.scale(by: 1.2, duration: accentDuration))
+            if !selectedCard.beingViewed {
+                selectedCard = card
+                print("card \(card.name) selected")
+            }
             // If card has not yet been viewed pop-down
-            } else if !card.beingViewed && !card.faceUp {
-                card.run(SKAction.scale(to: 0.8, duration: accentDuration))
-            // If card is face up but not being viewed pop-down then pop-up
-            } else {
-                card.run(SKAction.sequence([SKAction.scale(to: 0.8, duration: accentDuration),
-                                            SKAction.scale(to: 1.0, duration: accentDuration)]))
+            if !card.beingViewed {
+                card.run(SKAction.scale(to: 0.9, duration: accentDuration))
             }
         }
     }
@@ -96,31 +99,22 @@ class MatchingGameScene: SKScene {
         let touchedNode = self.atPoint(positionInScene)
         
         if touchedNode is Card {
-            
             let card: Card = touchedNode as! Card
-
-            //TODO: If a card is being viewed, return it to original position from touch ANYWHERE on screen
-            //if card.beingViewed {
-                
-                //let moveCardBack = card.returnToLocation()
-                //let checkForMatch = pair.handlePossibleMatch(newCard: card)
-                //self.run(SKAction.sequence([moveCardBack, checkForMatch]))
-                
-            //} else if !card.beingViewed && !card.faceUp {
-            if !card.faceUp {
+            
+            if !card.faceUp && !card.beingViewed && card == selectedCard {
+                // Reveal the card
+                //TODO: If a card is being viewed, any screen touch should return it to board
                 let revealCard = card.revealCard()
                 let waitForAnimationCompletion = SKAction.wait(forDuration: card.getRevealAnimationTime())
                 let checkForMatch = pair.handlePossibleMatch(newCard: card)
                 let handleCardFlip = SKAction.sequence([revealCard, waitForAnimationCompletion, checkForMatch])
                 self.run(handleCardFlip)
+                
+            } else if !card.beingViewed {
+                card.run(SKAction.scale(to: 1.0, duration: 0.1))
             }
 
-            //}
         }
 
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
     }
 }

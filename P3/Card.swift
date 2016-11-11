@@ -88,6 +88,8 @@ class Card: SKSpriteNode {
         return SKAction.run {
             let screenWidth = self.parent?.frame.size.width
             let screenHeight = self.parent?.frame.size.height
+            
+            self.beingViewed = true
         
             // Move card to center of screen
             let moveToCenter = SKAction.move(to: CGPoint(x: screenWidth!/2, y: screenHeight!/2), duration: animationTime)
@@ -109,8 +111,6 @@ class Card: SKSpriteNode {
             // Animate
             let finalSequence = SKAction.sequence([givePriority, revealCard])
             self.run(finalSequence)
-        
-            self.beingViewed = true
         }
     }
     
@@ -128,10 +128,10 @@ class Card: SKSpriteNode {
         let revokePriority = self.standardPriority()
         
         // Group actions
-        let completeMove = SKAction.group([returnToStartingLocation, returnToStartingSize])
+        let entireMove = SKAction.group([returnToStartingLocation, returnToStartingSize])
        
         // Animate
-        let finalSequence = SKAction.sequence([completeMove, revokePriority])
+        let finalSequence = SKAction.sequence([entireMove, revokePriority])
         self.run(finalSequence)
         
         self.beingViewed = false

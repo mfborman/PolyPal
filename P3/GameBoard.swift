@@ -11,24 +11,26 @@ import SpriteKit
 
 class GameBoard: SKSpriteNode{
 
-    private let board: CGRect
     private let rowCount: Int
     private let columnCount: Int
+    let width: CGFloat
+    let height: CGFloat
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    init (board: CGRect, rowCount: Int, columnCount: Int) {
-        self.board = board
+    init (width: CGFloat, height: CGFloat, rowCount: Int, columnCount: Int) {
         self.rowCount = rowCount
         self.columnCount = columnCount
+        self.width = width
+        self.height = height
         
-        super.init(texture: SKTexture(imageNamed: "memory_bgrnd"), color: .clear, size: CGSize(width: board.width, height: board.height))
+        super.init(texture: SKTexture(imageNamed: "memory_bgrnd"), color: .clear, size: CGSize(width: width, height: height))
         
         self.name = "gameBoard"
         self.zPosition = cardPriority.background+1
-        self.size = board.size
+        self.size = CGSize(width: width, height: height)
         self.anchorPoint = CGPoint(x: 0, y: 0)
     }
     
@@ -40,8 +42,8 @@ class GameBoard: SKSpriteNode{
      */
     func fillWithCards(cardList: [Card]) {
         
-        let xOffset = board.width / CGFloat(columnCount)
-        let yOffset = board.height / CGFloat(rowCount)
+        let xOffset = width / CGFloat(columnCount)
+        let yOffset = height / CGFloat(rowCount)
         var cardIndex = 0
         
         for i in 0..<rowCount {
