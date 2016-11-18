@@ -165,6 +165,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6E-rz-BHq">
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="presentation" id="cJN-AC-6cP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -224,6 +227,6 @@
         <image name="shapes_btn" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iaA-As-onU"/>
+        <segue reference="cJN-AC-6cP"/>
     </inferredMetricsTieBreakers>
 </document>

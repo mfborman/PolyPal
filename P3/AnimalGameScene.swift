@@ -16,6 +16,7 @@ class AnimalGameScene: SKScene {
     let background = SKSpriteNode(imageNamed: "animals_bgrnd")
     //TODO: Remove global selectedNode logic. It disallows parallel node animations
     var selectedNode = SKSpriteNode()
+    var barnSprite = SKSpriteNode()
     var targetAnimalLabel = SKLabelNode()
     var animalImageNames: [String] = []
     var animalsOnScreen: [String] = []
@@ -45,7 +46,7 @@ class AnimalGameScene: SKScene {
         self.background.zPosition = depth.background
         
         // Add Barn
-        let barnSprite = SKSpriteNode(imageNamed: "barn")
+        barnSprite = SKSpriteNode(imageNamed: "barn")
         let barnX = screenSize.width * (0.75)
         let barnY = screenSize.height * (0.35)
         let spriteSizeRatio = barnSprite.size.height/barnSprite.size.width
@@ -162,7 +163,7 @@ class AnimalGameScene: SKScene {
             if touchedNodes[1].name == "barn" &&
                 getAnimalType(animal: touchedNodes[0] as! SKSpriteNode) == animalsOnScreen[0] {
                 
-                correctAnimalPlacement(animal: touchedNodes[0] as! SKSpriteNode, barn: touchedNodes[1] as! SKSpriteNode)
+                correctAnimalPlacement(animal: touchedNodes[0] as! SKSpriteNode)
                 
             } else if touchedNodes[0].position.x > self.frame.size.width/2 {
                 
@@ -183,14 +184,14 @@ class AnimalGameScene: SKScene {
      *
      * Params: SKSpriteNode, SKSPriteNode
      */
-    func correctAnimalPlacement(animal: SKSpriteNode, barn: SKSpriteNode) {
+    func correctAnimalPlacement(animal: SKSpriteNode) {
         
         let animationTime = 0.6
         
         // Move animal to barn door
-        let barnLocation = barn.position
-        let barnHeight = barn.size.height
-        let barnWidth = barn.size.width
+        let barnLocation = barnSprite.position
+        let barnHeight = barnSprite.size.height
+        let barnWidth = barnSprite.size.width
         let barnDoorLocation = CGPoint(x: barnLocation.x-(barnWidth/50), y: barnLocation.y-(barnHeight/3.5))
         let animalLocation = animal.position
         
@@ -204,18 +205,27 @@ class AnimalGameScene: SKScene {
         let pop = SKAction.scale(to: 1.2, duration: animationTime/4)
 
         // Shrink the animal away
-        let shrink = SKAction.scale(to: 0, duration: animationTime)
+        let shrink = SKAction.scale(to: 0.1, duration: animationTime)
         
         // Remove Animal from scene
         let removeNode = SKAction.removeFromParent()
         animalsOnScreen.remove(at: 0)
         
-        // Execute animations
+        // Move barn to accept animal
+        let waitToSettle = SKAction.wait(forDuration: animationTime*(3/4))
+        let up = SKAction.scale(to: 1.05, duration: animationTime/4)
+        let down = SKAction.scale(to: 0.98, duration: animationTime/4)
+        let initial = SKAction.scale(to: 1.0, duration: animationTime/4)
+        let settle = SKAction.sequence([waitToSettle, up, down, initial])
+        
+        // Complete animal animation
         let popShrinkSequence = SKAction.sequence([pop, shrink])
         let moveGroup = SKAction.group([popShrinkSequence, followLine])
         let playSound = playNextAnimalSound()
         let finalSequence = SKAction.sequence([moveGroup, removeNode, playSound])
+        
         selectedNode.run(finalSequence)
+        barnSprite.run(settle)
         
     }
     
@@ -241,10 +251,17 @@ class AnimalGameScene: SKScene {
         // Replay animal sound
         let playSound = playNextAnimalSound()
         
+        // Shake barn
+        let shakeRight = SKAction.rotate(byAngle: 0.05, duration: animationTime/4)
+        let shakeLeft = SKAction.rotate(byAngle: -0.1, duration: animationTime/4)
+        let barnShake = SKAction.sequence([shakeRight, shakeLeft, shakeRight])
+        
         // Execute animations
         let returnAnimal = SKAction.group([followLine, flip])
         let finalSequence = SKAction.sequence([returnAnimal, returnToInitialState(sprite: selectedNode), playSound])
+        
         selectedNode.run(finalSequence)
+        barnSprite.run(barnShake)
     }
     
     /*
