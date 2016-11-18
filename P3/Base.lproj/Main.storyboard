@@ -91,7 +91,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="Kne-Tt-P05"/>
+                                    <segue destination="BV1-FR-VrT" kind="custom" identifier="SegueToAnimalGame" customClass="SegueToAnimalGame" customModule="P3" customModuleProvider="target" id="tuu-4Y-4rh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -165,9 +165,6 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6E-rz-BHq">
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
-                                <connections>
-                                    <segue destination="nuJ-47-VJY" kind="show" id="TFI-qj-XN8"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -178,16 +175,10 @@
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="T6E-rz-BHq" secondAttribute="bottom" constant="20" id="S9G-lh-Cne"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="c6A-bu-ECJ"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="NSB-Yf-KV0" kind="unwind" identifier="returnToHomeScreen" unwindAction="returnToHomeScreenWithSender:" id="Io4-IT-vXv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-                <exit id="NSB-Yf-KV0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-632" y="-819"/>
         </scene>
@@ -233,6 +224,6 @@
         <image name="shapes_btn" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TFI-qj-XN8"/>
+        <segue reference="iaA-As-onU"/>
     </inferredMetricsTieBreakers>
 </document>

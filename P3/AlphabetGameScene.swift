@@ -15,14 +15,9 @@ class AlphabetGameScene: SKScene {
     let background = SKSpriteNode(imageNamed: "alphabet_bgrnd")//background for game var
     var selectedNode = SKSpriteNode()
     var letterImageNames: [String] = []
-    var quizImageNames: [String] = []
-    var spaceImageNames: [String] = []
-    
-    var lettersOnScreen: [String] = []
-    var quizOnScreen: [String] = []
-    var spacesOnScreen: [String] = []
-    var correctMatches: [String] = []
-    
+    var lettersOnScreen: [String]
+    var missingLetters: [MissingLetter]
+    var correctMatches: [String]
     
     /*
      * Required super init
@@ -35,44 +30,42 @@ class AlphabetGameScene: SKScene {
      * Initialize the graphics of the scene
      */
     override init(size: CGSize) {
+        self.lettersOnScreen = []
+        self.missingLetters = []
+        correctMatches = []
+        
         super.init(size: size)//cover all paths
         
         //letters to be presented in a sequence on the chalkboard with blanks
         let letterImageNames = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-        //letters to be presented in a subset below chalkboard for quizzing
-        let quizImageNames = ["A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2", "I2", "J2", "K2", "L2", "M2", "N2", "O2", "P2", "Q2", "R2", "S2", "T2", "U2", "V2", "W2", "X2", "Y2", "Z2"]
-        //spaces to be generated randomly within the sequence
-        let spaceImageNames = ["sp1", "sp2", "sp3", "sp4", "sp5"]
         
         let letters = 26;//letters on board
         let quiz = 5//quiz letters
         var spaceCount = 0;//quiz spaces on board
+        let missingLetterCount = 5
+        let screenSize = self.frame.size
         
-        self.lettersOnScreen = []
-        self.quizOnScreen = []
-        self.spacesOnScreen = []
         self.background.name = "background"
         self.background.size = self.frame.size
         self.background.anchorPoint = CGPoint.zero
         self.background.zPosition = 0.0
-        let screenSize = self.frame.size
         self.addChild(background)
         
-        
-        //builds the quizOnScreen Array up with random letter image names
-        while(quizOnScreen.count < 5){
-            let rand = Int(arc4random_uniform(UInt32(letters)))//does this generate a random number?
-            if(!quizOnScreen.contains(letterImageNames[rand])){
-                quizOnScreen.append(letterImageNames[rand])
+        // Select random letters for the missing letter list
+        repeat {
+            let rand = Int(arc4random_uniform(UInt32(letters)))
+            let letter = MissingLetter(letter: letterImageNames[rand])
+            if !contains(letter: letter.letter, inArray: missingLetters) {
+                missingLetters.append(letter)
             }
-        }
+        } while missingLetters.count < missingLetterCount
         
         //generate the sprites on the chalkboard
         for i in 0..<letters {
             
             let sprite: SKSpriteNode
             
-            if(!quizOnScreen.contains(letterImageNames[i])){
+            if !contains(letter: letterImageNames[i], inArray: missingLetters){
                 
                 //generate sprite from letter images
                 var imageName: String
@@ -124,14 +117,14 @@ class AlphabetGameScene: SKScene {
         }
         
         // Randomize array
-        randomizeArray(&quizOnScreen)
+        randomizeArray(&missingLetters)
         
         //Generates the shape sprites on the screen
         for i in 0..<quiz {
             
             let sprite: SKSpriteNode
             
-            let imageName = quizOnScreen[i] + "2"
+            let imageName = missingLetters[i].letter + "2"
             
             sprite = SKSpriteNode(imageNamed: imageName)
             sprite.name = kQuizNodeName + "." + imageName
@@ -157,12 +150,28 @@ class AlphabetGameScene: SKScene {
         
     }
     
+    func contains(letter: String, inArray: [MissingLetter]) -> Bool {
+        for i in 0..<inArray.count {
+            if inArray[i].letter == letter {
+                return true
+            }
+        }
+        return false
+    }
+    
     func nodeIsQuizLetter(node: SKSpriteNode) -> Bool {
         let nodeName = node.name?.components(separatedBy: ".")
         if nodeName?[0] == kQuizNodeName {
             return true
         } else {
             return false
+        }
+    }
+    
+    func animateForCorrectPlacement(letter: SKSpriteNode) -> SKAction {
+        return SKAction.run {
+            let wiggle = SKAction.rotate(byAngle: 0.2, duration: 1)
+            letter.run(wiggle)
         }
     }
     
@@ -175,21 +184,14 @@ class AlphabetGameScene: SKScene {
     }
     
     func selectNodeForTouch(_ touchLocation: CGPoint) {
-        // 1
+        
         let touchedNode = self.atPoint(touchLocation)
         if touchedNode is SKSpriteNode {
-            // 2
+            
             if !selectedNode.isEqual(touchedNode) {
                 selectedNode.removeAllActions()
                 selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
                 selectedNode = touchedNode as! SKSpriteNode
-                // 3
-                /*if nodeIsAShape(node: touchedNode as! SKSpriteNode) {
-                    let sequence = SKAction.sequence([SKAction.rotate(byAngle: degToRad(-4.0), duration:0.1),
-                                                      SKAction.rotate(byAngle: 0.0, duration: 0.1),
-                                                      SKAction.rotate(byAngle: degToRad(4.0), duration: 0.1)])
-                    selectedNode.run(SKAction.repeatForever(sequence), withKey: "shake")
-                }*/
             }
         }
     }
@@ -209,6 +211,12 @@ class AlphabetGameScene: SKScene {
         let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
         
         panForTranslation(translation)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        let positionInScene = touch.location(in: self)
+        let touchedNode = self.atPoint(positionInScene)
     }
     
 }

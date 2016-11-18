@@ -116,25 +116,24 @@ class Card: SKSpriteNode {
     
     private func returnToLocation(animationTime: TimeInterval) -> SKAction {
         return SKAction.run {
-        let animationTime = 0.4
         
-        // Move back to initial location
-        let returnToStartingLocation = SKAction.move(to: self.gamePosition, duration: animationTime)
+            // Move back to initial location
+            let returnToStartingLocation = SKAction.move(to: self.gamePosition, duration: animationTime)
         
-        // Shrink back to normal size
-        let returnToStartingSize = SKAction.scale(to: 1.0, duration: animationTime)
+            // Shrink back to normal size
+            let returnToStartingSize = SKAction.scale(to: 1.0, duration: animationTime)
         
-        // Revoke priority in view
-        let revokePriority = self.standardPriority()
+            // Revoke priority in view
+            let revokePriority = self.standardPriority()
         
-        // Group actions
-        let entireMove = SKAction.group([returnToStartingLocation, returnToStartingSize])
+            // Group actions
+            let entireMove = SKAction.group([returnToStartingLocation, returnToStartingSize])
        
-        // Animate
-        let finalSequence = SKAction.sequence([entireMove, revokePriority])
-        self.run(finalSequence)
+            // Animate
+            let finalSequence = SKAction.sequence([entireMove, revokePriority])
+            self.run(finalSequence)
         
-        self.beingViewed = false
+            self.beingViewed = false
         }
     }
     

@@ -83,10 +83,9 @@ class MatchingGameScene: SKScene {
             let card: Card = touchedNode as! Card
             if !selectedCard.beingViewed {
                 selectedCard = card
-                print("card \(card.name) selected")
             }
             // If card has not yet been viewed pop-down
-            if !card.beingViewed {
+            if !card.beingViewed && !selectedCard.beingViewed {
                 card.run(SKAction.scale(to: 0.9, duration: accentDuration))
             }
         }
@@ -110,8 +109,9 @@ class MatchingGameScene: SKScene {
                 let handleCardFlip = SKAction.sequence([revealCard, waitForAnimationCompletion, checkForMatch])
                 self.run(handleCardFlip)
                 
-            } else if !card.beingViewed {
-                card.run(SKAction.scale(to: 1.0, duration: 0.1))
+            }
+            if !selectedCard.beingViewed {
+                selectedCard.run(SKAction.scale(to: 1.0, duration: 0.1))
             }
 
         }
