@@ -250,21 +250,21 @@ class AlphabetGameScene: SKScene {
         
         if letterPlacedCorrectly(letter: letter, location: location) {
             print(getLetter(node: letter) + " " + getLetter(node: location))
-            let letterAnimationTime = 5.0//0.5
+            let letterAnimationTime = 1.0//0.5
             let spaceAnimationTime = letterAnimationTime/2
             
             
             let properLocation = CGPoint(x: location.position.x, y: location.position.y)
         
-            let aboveProperLocation = CGPoint(x: properLocation.x, y: properLocation.y+location.size.height)
+            let aboveProperLocation = CGPoint(x: properLocation.x, y: properLocation.y+location.size.height/2)
             
             // Letter actions
             let moveAboveProperLocation = SKAction.move(to: aboveProperLocation, duration: letterAnimationTime/5)
             
-            let dramaticPause = SKAction.wait(forDuration: letterAnimationTime/5)
+            let dramaticPause = SKAction.wait(forDuration: letterAnimationTime/10)
             
-            let dipBelowProperLocation = SKAction.moveTo(y: properLocation.y-location.size.height/4, duration: letterAnimationTime/10)
-            let moveToLocation = SKAction.move(to: properLocation, duration: letterAnimationTime/5)
+            let dipBelowProperLocation = SKAction.moveTo(y: properLocation.y-location.size.height/10, duration: letterAnimationTime/10)
+            let moveToLocation = SKAction.move(to: properLocation, duration: letterAnimationTime/10)
             let slam = SKAction.sequence([dipBelowProperLocation, moveToLocation])
             
             let fadeOutLetter = SKAction.fadeOut(withDuration: letterAnimationTime/5)

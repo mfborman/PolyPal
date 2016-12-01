@@ -11,6 +11,9 @@ import SpriteKit
 
 class AnimalGameViewController: UIViewController {
     
+    @IBAction func returnToHomeScreen(_ segue:UIStoryboardSegue) {
+    }
+    
     override func viewWillLayoutSubviews() {
         // Configure the view.
         let skView = self.view as! SKView
