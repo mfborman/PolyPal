@@ -93,6 +93,9 @@ class AnimalGameScene: SKScene {
             // Execute actions
             let spawnAction = SKAction.sequence([minimize, delay, grow, shrink, playSound])
             animalSprite.run(spawnAction)
+            
+            // Play background music
+            playMusic(filename: "Animal_Game.mp3")
         }
 
         // Add name label for target animal
