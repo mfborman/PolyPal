@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import SpriteKit
 
 // Define zPositions for matching game
@@ -31,5 +32,25 @@ func randomizeArray<T>(_ array: inout [T]) {
         let value = array[randomIndex]
         array[randomIndex] = array[i]
         array[i] = value
+    }
+}
+
+// Play background music
+var backgroundMusicPlayer = AVAudioPlayer()
+
+//Background music function
+func playMusic(filename: String) {
+    let url = Bundle.main.url(forResource: filename, withExtension: nil)
+    guard let newURL = url else {
+        print("Could not find file: \(filename)")
+        return
+    }
+    do {
+        backgroundMusicPlayer = try AVAudioPlayer(contentsOf: newURL)
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
+    } catch let error as NSError {
+        print(error.description)
     }
 }
