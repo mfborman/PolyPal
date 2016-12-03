@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		576AB1151DF376AD006F8ABE /* Shape_Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */; };
 		576AB1171DF376B3006F8ABE /* Animal_Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */; };
+		576AB1191DF37E93006F8ABE /* Home_Screen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB1181DF37E93006F8ABE /* Home_Screen.mp3 */; };
+		576AB1211DF38B29006F8ABE /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576AB1201DF38B29006F8ABE /* HomeScreenViewController.swift */; };
 		57EDB4F71DC2A9140074E85C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EDB4F61DC2A9140074E85C /* AppDelegate.swift */; };
 		57EDB4F91DC2A9140074E85C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 57EDB4F81DC2A9140074E85C /* GameScene.sks */; };
 		57EDB4FB1DC2A9140074E85C /* AnimalGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EDB4FA1DC2A9140074E85C /* AnimalGameScene.swift */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Shape_Game.mp3; sourceTree = "<group>"; };
 		576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Animal_Game.mp3; sourceTree = "<group>"; };
+		576AB1181DF37E93006F8ABE /* Home_Screen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Home_Screen.mp3; sourceTree = "<group>"; };
+		576AB1201DF38B29006F8ABE /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		57EDB4F31DC2A9140074E85C /* P3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EDB4F61DC2A9140074E85C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57EDB4F81DC2A9140074E85C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 		57EDB4F51DC2A9140074E85C /* P3 */ = {
 			isa = PBXGroup;
 			children = (
+				576AB1181DF37E93006F8ABE /* Home_Screen.mp3 */,
 				576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */,
 				576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */,
 				A21D1A171DCBC92A0028C430 /* Alphabet Game */,
@@ -161,6 +166,7 @@
 				57EDB4F81DC2A9140074E85C /* GameScene.sks */,
 				57EDB5011DC2A9140074E85C /* Assets.xcassets */,
 				57EDB5061DC2A9140074E85C /* Info.plist */,
+				576AB1201DF38B29006F8ABE /* HomeScreenViewController.swift */,
 			);
 			path = P3;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20CCD961DC9B69500A4314A /* horse.mp3 in Resources */,
+				576AB1191DF37E93006F8ABE /* Home_Screen.mp3 in Resources */,
 				A222F9371DCA4E0A00AED002 /* animalVictorySound.mp3 in Resources */,
 				A20CCD981DC9B69500A4314A /* pig.mp3 in Resources */,
 				A20CCD911DC9B69500A4314A /* cow.mp3 in Resources */,
@@ -402,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57EDB4FB1DC2A9140074E85C /* AnimalGameScene.swift in Sources */,
+				576AB1211DF38B29006F8ABE /* HomeScreenViewController.swift in Sources */,
 				57EDB4FD1DC2A9140074E85C /* AnimalGameViewController.swift in Sources */,
 				A21D1A051DCA8F220028C430 /* MatchingGameViewController.swift in Sources */,
 				A2A27EFB1DD22BF600107E3F /* GameBoard.swift in Sources */,

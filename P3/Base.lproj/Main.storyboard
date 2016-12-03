@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="-796" y="146"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Screen View Controller-->
         <scene sceneID="v5z-X4-uy9">
             <objects>
-                <viewController id="nuJ-47-VJY" sceneMemberID="viewController">
+                <viewController id="nuJ-47-VJY" customClass="HomeScreenViewController" customModule="P3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zFp-lu-Tf1"/>
                         <viewControllerLayoutGuide type="bottom" id="MYA-H9-Yzs"/>
@@ -249,6 +249,6 @@
         <image name="shapes_btn" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HdI-Ga-tnn"/>
+        <segue reference="BT2-mM-C9m"/>
     </inferredMetricsTieBreakers>
 </document>
