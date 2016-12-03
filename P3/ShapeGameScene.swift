@@ -22,6 +22,7 @@ class ShapeGameScene: SKScene {
     var holesOnScreen: [String] = []
     var correctMatches: [String] = []
     
+    var backgroundMusicPlayer = AVAudioPlayer()
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -47,6 +48,7 @@ class ShapeGameScene: SKScene {
         // 2 - add the background
         self.addChild(background)
         
+        playMusic(filename: "Shape_Game.mp3")
         
         //Generates the shape sprites on the screen
         for i in 0..<onScreenShapeCount {
@@ -74,7 +76,7 @@ class ShapeGameScene: SKScene {
             
             self.addChild(sprite)
             
-            playMusic(filename: "Shape_Game.mp3")
+            
         }
         //Generates the hole sprites on the screen
         for i in 0..<onScreenHoleCount {
@@ -257,8 +259,6 @@ class ShapeGameScene: SKScene {
         
         panForTranslation(translation)
     }
-    
-    var backgroundMusicPlayer = AVAudioPlayer()
     
     //Background music function
     func playMusic(filename: String) {
