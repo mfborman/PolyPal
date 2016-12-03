@@ -74,8 +74,7 @@ class ShapeGameScene: SKScene {
             sprite.position = CGPoint(x: size.width/2 * xOffset, y: size.height * yOffset)
             sprite.zPosition = 2.0
             
-            
-            
+            self.addChild(sprite)
         }
         //Generates the hole sprites on the screen
         for i in 0..<onScreenHoleCount {
