@@ -110,10 +110,9 @@ class MatchingGameScene: SKScene {
                 self.run(handleCardFlip)
                 
             }
-            if !selectedCard.beingViewed {
-                selectedCard.run(SKAction.scale(to: 1.0, duration: 0.1))
-            }
-
+        }
+        if !selectedCard.beingViewed {
+            selectedCard.run(SKAction.scale(to: 1.0, duration: 0.1))
         }
 
     }
