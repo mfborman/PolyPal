@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 private let kShapeNodeName = "shape"
 private let kHoleNodeName = "hole"
@@ -72,6 +73,8 @@ class ShapeGameScene: SKScene {
             sprite.zPosition = 2.0
             
             self.addChild(sprite)
+            
+            playMusic(filename: "Shape_Game.mp3")
         }
         //Generates the hole sprites on the screen
         for i in 0..<onScreenHoleCount {
@@ -253,6 +256,25 @@ class ShapeGameScene: SKScene {
         let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
         
         panForTranslation(translation)
+    }
+    
+    var backgroundMusicPlayer = AVAudioPlayer()
+    
+    //Background music function
+    func playMusic(filename: String) {
+        let url = Bundle.main.url(forResource: filename, withExtension: nil)
+        guard let newURL = url else {
+            print("Could not find file: \(filename)")
+            return
+        }
+        do {
+            backgroundMusicPlayer = try AVAudioPlayer(contentsOf: newURL)
+            backgroundMusicPlayer.numberOfLoops = -1
+            backgroundMusicPlayer.prepareToPlay()
+            backgroundMusicPlayer.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
     }
     
     

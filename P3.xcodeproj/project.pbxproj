@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		576AB1151DF376AD006F8ABE /* Shape_Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */; };
+		576AB1171DF376B3006F8ABE /* Animal_Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */; };
 		57EDB4F71DC2A9140074E85C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EDB4F61DC2A9140074E85C /* AppDelegate.swift */; };
 		57EDB4F91DC2A9140074E85C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 57EDB4F81DC2A9140074E85C /* GameScene.sks */; };
 		57EDB4FB1DC2A9140074E85C /* AnimalGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EDB4FA1DC2A9140074E85C /* AnimalGameScene.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Shape_Game.mp3; sourceTree = "<group>"; };
+		576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Animal_Game.mp3; sourceTree = "<group>"; };
 		57EDB4F31DC2A9140074E85C /* P3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EDB4F61DC2A9140074E85C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57EDB4F81DC2A9140074E85C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 		57EDB4F51DC2A9140074E85C /* P3 */ = {
 			isa = PBXGroup;
 			children = (
+				576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */,
+				576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */,
 				A21D1A171DCBC92A0028C430 /* Alphabet Game */,
 				A21D1A061DCA90560028C430 /* Animal Game */,
 				A21D1A081DCA90810028C430 /* Shape Game */,
@@ -363,7 +369,9 @@
 				A20CCD941DC9B69500A4314A /* goat.mp3 in Resources */,
 				A20CCD901DC9B69500A4314A /* bear.mp3 in Resources */,
 				57EDB5051DC2A9140074E85C /* LaunchScreen.storyboard in Resources */,
+				576AB1171DF376B3006F8ABE /* Animal_Game.mp3 in Resources */,
 				A20CCD921DC9B69500A4314A /* elephant.mp3 in Resources */,
+				576AB1151DF376AD006F8ABE /* Shape_Game.mp3 in Resources */,
 				A20CCD931DC9B69500A4314A /* giraffe.mp3 in Resources */,
 				A20CCD971DC9B69500A4314A /* lion.mp3 in Resources */,
 				A20CCD951DC9B69500A4314A /* hippo.mp3 in Resources */,
