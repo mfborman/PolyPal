@@ -130,8 +130,8 @@ class AlphabetGameScene: SKScene {
             
             let imageName = letter + "2"
             
-            sprite = SKSpriteNode(imageNamed: imageName)
-            sprite.name = kQuizNodeName + "." + letter
+            let spriteName = kQuizNodeName + "." + imageName
+            sprite = Letter(spriteName: spriteName)
 
             // Resize sprite based on screen size
             let spriteSizeRatio = sprite.size.height/sprite.size.width
@@ -210,10 +210,8 @@ class AlphabetGameScene: SKScene {
     func selectNodeForTouch(_ touchLocation: CGPoint) {
         
         let touchedNode = self.atPoint(touchLocation)
-        if touchedNode is SKSpriteNode {
-            
-            if !selectedNode.isEqual(touchedNode) {
-                selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
+        if touchedNode is Letter {
+            if !selectedNode.isEqual(touchedNode) && !(touchedNode as! Letter).isCorrectlyPlaced() {
                 selectedNode = touchedNode as! SKSpriteNode
             }
         }
