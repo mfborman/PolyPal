@@ -11,6 +11,8 @@ import SpriteKit
 
 class MatchingGameViewController: UIViewController {
     
+    var boardSize6by6 = Bool()
+    
     override func viewWillLayoutSubviews() {
         // Configure the view.
         let skView = self.view as! SKView
@@ -21,6 +23,8 @@ class MatchingGameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         
         let scene = MatchingGameScene(size: skView.frame.size)
+        scene.boardSize6by6 = boardSize6by6
+        scene.settup()
         
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .aspectFill

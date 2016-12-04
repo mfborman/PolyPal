@@ -20,9 +20,14 @@ class GameBoard: SKSpriteNode{
         fatalError("NSCoding not supported")
     }
     
-    init (width: CGFloat, height: CGFloat, rowCount: Int, columnCount: Int) {
-        self.rowCount = rowCount
-        self.columnCount = columnCount
+    init (width: CGFloat, height: CGFloat, boardSize6by6: Bool) {
+       
+        if (boardSize6by6) {
+            self.rowCount = 6
+        } else {
+            self.rowCount = 4
+        }
+        self.columnCount = rowCount
         self.width = width
         self.height = height
         

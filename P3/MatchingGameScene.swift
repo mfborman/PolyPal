@@ -14,6 +14,7 @@ class MatchingGameScene: SKScene {
     var pair : CardPair
     var nilCard = Card(cardType: "")
     var selectedCard: Card
+    var boardSize6by6 = Bool()
     
     override init(size: CGSize) {
         pair = CardPair()
@@ -21,29 +22,29 @@ class MatchingGameScene: SKScene {
 
         super.init(size: size)
         
+    }
+    
+    func settup() {
         // Define basic variables
-        let cardImageList = ["caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera"]
+        let cardImageList = ["caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera", "caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera", "car", "mug"]
         var generatedCards : [Card] = []
-        let numberOfCards = 16
-        let rowSize = 4
-        let columnSize = 4
+        let numberOfCards = boardSize6by6 ? 36 : 16
         let uniqueCardCount = numberOfCards/2
         let screenSize = self.frame.size
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
         // Create the game board
-        let gameBoard = GameBoard(width: screenWidth, height: screenHeight, rowCount: rowSize, columnCount: columnSize
-        )
+        let gameBoard = GameBoard(width: screenWidth, height: screenHeight, boardSize6by6: boardSize6by6)
         
         // Create cards in array
         for i in 0..<uniqueCardCount {
             
             // Set up card
             let card = Card(cardType: cardImageList[i])
-            //TODO: Remake cards to match ratios of screen so we don't have to 
+            //TODO: Remake cards to match ratios of screen so we don't have to
             let cardSizeRatio = screenHeight/screenWidth
-            let cardWidth = gameBoard.width/CGFloat(rowSize)
+            let cardWidth = gameBoard.width/CGFloat(boardSize6by6 ? 6 : 4)
             let cardHeight = cardWidth*cardSizeRatio
             card.size = CGSize(width: cardWidth, height: cardHeight)
             card.zPosition = cardPriority.standard
@@ -58,7 +59,7 @@ class MatchingGameScene: SKScene {
             // Add cards to scene
             generatedCards.append(card)
             generatedCards.append(cardMatch)
-
+            
         }
         
         // Randomize the array so that the cards will be shuffled on the board
