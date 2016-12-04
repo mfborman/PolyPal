@@ -334,8 +334,7 @@ class AnimalGameScene: SKScene {
         
         if touchedNode is SKSpriteNode {
             //if !selectedNode.isEqual(touchedNode) {
-                selectedNode.removeAllActions()
-                selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
+                //selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
                 
                 selectedNode = touchedNode as! SKSpriteNode
                 

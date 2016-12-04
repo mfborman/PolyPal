@@ -65,6 +65,7 @@ class AlphabetGameScene: SKScene {
             
             let sprite: SKSpriteNode
             let letter = letterImageNames[i]
+            let spriteName: String
             
             if !contains(letter: letterImageNames[i], inArray: missingLetters){
                 
@@ -75,8 +76,7 @@ class AlphabetGameScene: SKScene {
                 } while lettersOnScreen.contains(imageName)
                 lettersOnScreen.append(imageName)
                 
-                sprite = SKSpriteNode(imageNamed: imageName)
-                sprite.name = kLetterNodeName + "." + imageName
+                spriteName = kLetterNodeName + "." + imageName
                 
             } else {
                 
@@ -84,11 +84,13 @@ class AlphabetGameScene: SKScene {
                 let imageName = "space"
                 lettersOnScreen.append(imageName)
                 
-                sprite = SKSpriteNode(imageNamed: imageName)
-                sprite.name = "space" + "." + letter
+                spriteName = "space" + "." + letter
                 spaceCount+=1;
                 
             }
+            // Create letter sprite
+            sprite = Letter(spriteName: spriteName)
+
             
             // Resize sprite based on screen size
             let spriteSizeRatio = sprite.size.height/sprite.size.width
@@ -211,7 +213,6 @@ class AlphabetGameScene: SKScene {
         if touchedNode is SKSpriteNode {
             
             if !selectedNode.isEqual(touchedNode) {
-                selectedNode.removeAllActions()
                 selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
                 selectedNode = touchedNode as! SKSpriteNode
             }
