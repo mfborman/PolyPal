@@ -213,7 +213,6 @@ class ShapeGameScene: SKScene {
         if touchedNode is SKSpriteNode {
             // 2
             if !selectedNode.isEqual(touchedNode) {
-                selectedNode.removeAllActions()
                 selectedNode.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
                 selectedNode = touchedNode as! SKSpriteNode
                 // 3
