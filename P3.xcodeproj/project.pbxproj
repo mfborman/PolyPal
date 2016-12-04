@@ -39,6 +39,7 @@
 		A250A03E1DDAADDD009D722D /* SegueToAnimalGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A250A03D1DDAADDD009D722D /* SegueToAnimalGame.swift */; };
 		A2A27EFB1DD22BF600107E3F /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A27EFA1DD22BF600107E3F /* GameBoard.swift */; };
 		A2B5DDFC1DCA8E5C001CCD22 /* MatchingGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5DDFB1DCA8E5C001CCD22 /* MatchingGameScene.swift */; };
+		A2C34DC01DF3960300ACB279 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C34DBF1DF3960300ACB279 /* Letter.swift */; };
 		A2DD64B11DC2FD0000D0C073 /* ShapeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD64B01DC2FD0000D0C073 /* ShapeGameViewController.swift */; };
 		A2DD64B31DC3003D00D0C073 /* ShapeGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD64B21DC3003D00D0C073 /* ShapeGameScene.swift */; };
 		A2E2CF401DD66203009B4641 /* MissingLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2CF3F1DD66203009B4641 /* MissingLetter.swift */; };
@@ -100,6 +101,7 @@
 		A250A03D1DDAADDD009D722D /* SegueToAnimalGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueToAnimalGame.swift; sourceTree = "<group>"; };
 		A2A27EFA1DD22BF600107E3F /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		A2B5DDFB1DCA8E5C001CCD22 /* MatchingGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingGameScene.swift; sourceTree = "<group>"; };
+		A2C34DBF1DF3960300ACB279 /* Letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		A2DD64B01DC2FD0000D0C073 /* ShapeGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeGameViewController.swift; sourceTree = "<group>"; };
 		A2DD64B21DC3003D00D0C073 /* ShapeGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeGameScene.swift; sourceTree = "<group>"; };
 		A2E2CF3F1DD66203009B4641 /* MissingLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingLetter.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				A21D1A131DCBC9160028C430 /* AlphabetGameScene.swift */,
 				A21D1A151DCBC9250028C430 /* AlphabetGameViewController.swift */,
 				A2E2CF3F1DD66203009B4641 /* MissingLetter.swift */,
+				A2C34DBF1DF3960300ACB279 /* Letter.swift */,
 			);
 			name = "Alphabet Game";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				A2B5DDFC1DCA8E5C001CCD22 /* MatchingGameScene.swift in Sources */,
 				57EDB4F71DC2A9140074E85C /* AppDelegate.swift in Sources */,
 				A21D1A0E1DCAC2F10028C430 /* Utilities.swift in Sources */,
+				A2C34DC01DF3960300ACB279 /* Letter.swift in Sources */,
 				A2DD64B31DC3003D00D0C073 /* ShapeGameScene.swift in Sources */,
 				A250A03E1DDAADDD009D722D /* SegueToAnimalGame.swift in Sources */,
 				A2E2CF401DD66203009B4641 /* MissingLetter.swift in Sources */,
