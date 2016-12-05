@@ -196,7 +196,9 @@ class AlphabetGameScene: SKScene {
     func panForTranslation(_ translation: CGPoint) {
         let position = selectedNode.position
         
-        if nodeIsQuizLetter(node: selectedNode) {
+        if nodeIsQuizLetter(node: selectedNode) && !(selectedNode as! Letter).correctPlacement {
+            
+            selectedNode.run(SKAction.scale(to: 1.2, duration: 0.05))
             selectedNode.position = CGPoint(x: position.x+translation.x, y: position.y+translation.y)
         }
     }
@@ -204,9 +206,9 @@ class AlphabetGameScene: SKScene {
     func selectNodeForTouch(_ touchLocation: CGPoint) {
         
         let touchedNode = self.atPoint(touchLocation)
-        if nodeIsQuizLetter(node: touchedNode as! SKSpriteNode) {
+        
+        if touchedNode is SKSpriteNode {
             selectedNode = touchedNode as! SKSpriteNode
-            selectedNode.run(SKAction.scale(to: 1.2, duration: 0.05))
         }
     }
     
@@ -283,6 +285,7 @@ class AlphabetGameScene: SKScene {
                     // Run Actions
                     letter.run(changeLetterColor)
                     location.run(removeSpaceWithDelay)
+                    (letter as! Letter).correctPlacement = true
                 } else {
                     // Drop letter
                     letter.run(SKAction.scale(to: 1.0, duration: letterAnimationTime/5))
