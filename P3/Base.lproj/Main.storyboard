@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6c-aq-cQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="146"/>
+            <point key="canvasLocation" x="-1307" y="34"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="v5z-X4-uy9">
@@ -80,7 +80,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Bem-m5-yye" kind="show" id="rdv-Xh-AQU"/>
+                                    <segue destination="chq-OQ-ftn" kind="presentation" id="e6m-JH-gBX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw0-mt-ebU">
@@ -239,21 +239,66 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="d99-Ig-HqK" firstAttribute="top" secondItem="xme-HS-kU1" secondAttribute="bottom" id="3ze-kU-oT4"/>
-                            <constraint firstItem="d99-Ig-HqK" firstAttribute="top" secondItem="liK-GI-Hc8" secondAttribute="bottom" id="57f-Iz-uQ7"/>
-                            <constraint firstItem="liK-GI-Hc8" firstAttribute="top" secondItem="68R-qa-yc8" secondAttribute="bottom" id="76b-3m-S4M"/>
+                            <constraint firstItem="d99-Ig-HqK" firstAttribute="top" secondItem="liK-GI-Hc8" secondAttribute="bottom" id="1sP-cD-ODl"/>
+                            <constraint firstItem="xme-HS-kU1" firstAttribute="top" secondItem="68R-qa-yc8" secondAttribute="bottom" id="7ti-2t-J7G"/>
                             <constraint firstItem="xme-HS-kU1" firstAttribute="width" secondItem="liK-GI-Hc8" secondAttribute="width" id="EGf-eS-ugS"/>
                             <constraint firstItem="liK-GI-Hc8" firstAttribute="leading" secondItem="xme-HS-kU1" secondAttribute="trailing" id="KSC-gN-LpK"/>
                             <constraint firstItem="xme-HS-kU1" firstAttribute="leading" secondItem="Hwa-iA-qKO" secondAttribute="leadingMargin" id="SgX-36-6HY"/>
+                            <constraint firstItem="d99-Ig-HqK" firstAttribute="top" secondItem="xme-HS-kU1" secondAttribute="bottom" id="SxX-zE-89w"/>
+                            <constraint firstItem="liK-GI-Hc8" firstAttribute="top" secondItem="68R-qa-yc8" secondAttribute="bottom" id="mD1-h0-bpn"/>
                             <constraint firstItem="liK-GI-Hc8" firstAttribute="leading" secondItem="xme-HS-kU1" secondAttribute="trailing" id="oB5-7p-Ede"/>
                             <constraint firstAttribute="trailingMargin" secondItem="liK-GI-Hc8" secondAttribute="trailing" id="p34-Wi-wNF"/>
-                            <constraint firstItem="xme-HS-kU1" firstAttribute="top" secondItem="68R-qa-yc8" secondAttribute="bottom" id="s2x-hg-kW8"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCm-Os-cZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1083" y="34"/>
+        </scene>
+        <!--Select Alphabet Game View Controller-->
+        <scene sceneID="3YS-FJ-mdu">
+            <objects>
+                <viewController storyboardIdentifier="SelectAlphabetGameViewController" id="chq-OQ-ftn" customClass="SelectAlphabetGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FUB-1P-BxP"/>
+                        <viewControllerLayoutGuide type="bottom" id="mza-ib-ry0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a2r-bl-f7l">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zal-eK-ysO">
+                                <rect key="frame" x="243" y="331" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Bem-m5-yye" kind="presentation" identifier="segueToLetterGame" id="0vX-nJ-Ivt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-dl-fab">
+                                <rect key="frame" x="719" y="331" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Bem-m5-yye" kind="presentation" identifier="segueToNumberGame" id="cSM-4g-CIh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dW6-dl-fab" firstAttribute="leading" secondItem="zal-eK-ysO" secondAttribute="trailing" id="3JH-E0-e7W"/>
+                            <constraint firstItem="dW6-dl-fab" firstAttribute="leading" secondItem="zal-eK-ysO" secondAttribute="trailing" id="Byf-7L-6tB"/>
+                            <constraint firstItem="zal-eK-ysO" firstAttribute="top" secondItem="FUB-1P-BxP" secondAttribute="bottom" id="E6w-xK-3Ml"/>
+                            <constraint firstItem="zal-eK-ysO" firstAttribute="width" secondItem="dW6-dl-fab" secondAttribute="width" id="Mh5-JS-0Ny"/>
+                            <constraint firstItem="mza-ib-ry0" firstAttribute="top" secondItem="zal-eK-ysO" secondAttribute="bottom" id="Q7j-nP-emW"/>
+                            <constraint firstItem="dW6-dl-fab" firstAttribute="top" secondItem="FUB-1P-BxP" secondAttribute="bottom" id="RKA-nY-cOH"/>
+                            <constraint firstItem="zal-eK-ysO" firstAttribute="leading" secondItem="a2r-bl-f7l" secondAttribute="leadingMargin" id="UDf-Sd-KsT"/>
+                            <constraint firstItem="mza-ib-ry0" firstAttribute="top" secondItem="dW6-dl-fab" secondAttribute="bottom" id="c2C-6c-fgE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dW6-dl-fab" secondAttribute="trailing" id="jsC-DM-a8p"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47h-Hq-2P5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1003" y="802"/>
         </scene>
         <!--Matching Game View Controller-->
         <scene sceneID="W04-3o-31q">
@@ -297,7 +342,8 @@
         <image name="shapes_btn" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5JI-Pf-dJL"/>
+        <segue reference="HdI-Ga-tnn"/>
+        <segue reference="0vX-nJ-Ivt"/>
         <segue reference="375-KJ-ypd"/>
     </inferredMetricsTieBreakers>
 </document>

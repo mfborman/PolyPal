@@ -13,8 +13,9 @@ class AlphabetGameScene: SKScene {
     let kLetterNodeName = "letter"
     let kQuizNodeName = "quiz"
     let kSpaceNodeName = "space"
-    
     let background = SKSpriteNode(imageNamed: "alphabet_bgrnd")//background for game var
+    var viewController: UIViewController?
+    
     var selectedNode = SKSpriteNode()
     var letterImageNames: [String] = []
     var lettersOnScreen: [String]
@@ -23,6 +24,7 @@ class AlphabetGameScene: SKScene {
     var missingLetterCount = Int()
     var lettersCorrectlyPlaced = Int()
     var correctMatches: [String]
+    var screenSize = CGSize()
     
     /*
      * Required super init
@@ -50,7 +52,7 @@ class AlphabetGameScene: SKScene {
         var spaceCount = 0;//quiz spaces on board
         missingLetterCount = 5
         lettersCorrectlyPlaced = 0
-        let screenSize = self.frame.size
+        screenSize = self.frame.size
         
         self.background.name = "background"
         self.background.size = self.frame.size
@@ -243,25 +245,86 @@ class AlphabetGameScene: SKScene {
         panForTranslation(translation)
     }
     
+    func turnLettersGold() -> SKAction {
+        return SKAction.run {
+            let increment = 0.04
+            let totalTime = increment * Double(self.correctlyPlacedLetters.count)
+            for i in 0..<self.correctlyPlacedLetters.count {
+                let imageName = self.correctlyPlacedLetters[i].letter + "3"
+                let delay = SKAction.wait(forDuration: increment * Double(i))
+                let raise = SKAction.scale(to: 1.2, duration: 0.1)
+                let turnGold = SKAction.setTexture(SKTexture(imageNamed: imageName))
+                let fall = SKAction.scale(to: 1.0, duration: 0.1)
+                let changeToGold = SKAction.sequence([delay, raise, turnGold, fall])
+                self.correctlyPlacedLetters[i].run(changeToGold)
+            }
+        }
+    }
+    
+    func dissipateLettersAndAddButtons() -> SKAction {
+        return SKAction.run {
+            let letterSize = self.correctlyPlacedLetters[0].size
+            let animationTime = 1.0
+            
+            for i in 0..<self.correctlyPlacedLetters.count {
+                //TODO: MAKING LETTERS MOVE AWAY AND FADE AFTER GAME VICTORY. WHILE THIS HAPPENS CHALKBOARD GETS REPLAY AND HOME BUTTONS 'WRITTEN' ON IT
+                let positiveX = (Int(arc4random_uniform(UInt32(2))) == 1) ? true : false
+                let positiveY = (Int(arc4random_uniform(UInt32(2))) == 1) ? true : false
+                let offsetX = Int(arc4random_uniform(UInt32(letterSize.width)))
+                let offsetY = Int(arc4random_uniform(UInt32(letterSize.height)))
+                let xMovement: CGFloat = (positiveX) ? CGFloat(offsetX) : CGFloat(offsetX*(-1))
+                let yMovement: CGFloat = (positiveY) ? CGFloat(offsetY) : CGFloat(offsetY*(-1))
+                let currentPosition = self.correctlyPlacedLetters[i].position
+                let destination = CGPoint(x: currentPosition.x+xMovement, y: currentPosition.y+yMovement)
+                
+                // Create replay button
+                let replayButton = SKSpriteNode(imageNamed: "white_replay_btn")
+                replayButton.size = CGSize(width: self.screenSize.width/5, height: self.screenSize.width/5)
+                replayButton.zPosition = 2
+                replayButton.position.x = self.screenSize.width*(1/3)
+                replayButton.position.y = self.screenSize.height*(7/10)
+                replayButton.name = "replayButton"
+                self.addChild(replayButton)
+                
+                // Create home button
+                let homeButton = SKSpriteNode(imageNamed: "white_home_btn")
+                homeButton.size = CGSize(width: self.screenSize.width/5, height: self.screenSize.width/5)
+                homeButton.zPosition = 2
+                homeButton.color = SKColor.blue
+                homeButton.position.x = self.screenSize.width*(2/3)
+                homeButton.position.y = self.screenSize.height*(7/10)
+                homeButton.name = "homeButton"
+                self.addChild(homeButton)
+                
+                // Letter actions
+                let moveAway = SKAction.move(to: destination, duration: animationTime)
+                let fadeAway = SKAction.fadeOut(withDuration: animationTime)
+                
+                // Button actions
+                let hide = SKAction.fadeOut(withDuration: 0.0)
+                let wait = SKAction.wait(forDuration: animationTime/2)
+                let fadeIn = SKAction.fadeIn(withDuration: animationTime)
+                
+                replayButton.run(SKAction.sequence([hide, wait, fadeIn]))
+                homeButton.run(SKAction.sequence([hide, wait, fadeIn]))
+                self.correctlyPlacedLetters[i].run(SKAction.group([moveAway, fadeAway]))
+            }
+        }
+    }
+    
     func handleEndGame() -> SKAction {
         return SKAction.run {
             // If the game has been won
             if self.lettersCorrectlyPlaced == self.missingLetterCount {
-                for i in 0..<self.correctlyPlacedLetters.count {
-                    let imageName = self.correctlyPlacedLetters[i].letter + "3"
-                    let delay = SKAction.wait(forDuration: 0.04 * Double(i))
-                    let raise = SKAction.scale(to: 1.2, duration: 0.1)
-                    let turnGold = SKAction.setTexture(SKTexture(imageNamed: imageName))
-                    let fall = SKAction.scale(to: 1.0, duration: 0.1)
-                    let changeToGold = SKAction.sequence([delay, raise, turnGold, fall])
-                    self.correctlyPlacedLetters[i].run(changeToGold)
-                }
+                
+                //TODO: Find better solution to make dissipate happen after all letters are gold
+                // Wait for letterAnimationTime multiplied by number of letters
+                let waitForGoldLetters = SKAction.wait(forDuration:0.04*Double(self.correctlyPlacedLetters.count))
+                let endGameAnimation = SKAction.sequence([self.turnLettersGold(), waitForGoldLetters, self.dissipateLettersAndAddButtons()])
+                
+                self.run(endGameAnimation)
+                
             }
-            //TODO: MAKING LETTERS MOVE AWAY AND FADE AFTER GAME VICTORY. WHILE THIS HAPPENS CHALKBOARD GETS REPLAY AND HOME BUTTONS 'WRITTEN' ON IT
-            let rand = Int(arc4random_uniform(UInt32(360)))
-            let hypotenuse = sqrt(pow((self.frame.size.width), 2) + pow((self.frame.size.height), 2))
-            //let moveAway = SKAction.move(by: <#T##CGVector#>, duration: <#T##TimeInterval#>)
-
         }
     }
     
@@ -274,6 +337,7 @@ class AlphabetGameScene: SKScene {
         let letterAnimationTime = 1.0//0.5
         let spaceAnimationTime = letterAnimationTime/2
         
+        // If a letter is placed over another letter
         if touchedNodes.count > 1 {
             if touchedNodes[0] is SKSpriteNode && touchedNodes[1] is SKSpriteNode {
                 letter = touchedNodes[0] as! SKSpriteNode
@@ -337,6 +401,23 @@ class AlphabetGameScene: SKScene {
             }
             
         }
+        // Handle replay button touch when victory card is displayde
+        if touchedNodes[0].name == "replayButton" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let currentVC = self.viewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectMatchingGameViewController")
+            self.removeAllChildren()
+            currentVC?.present(destinationVC, animated: true, completion: nil)
+            
+        } // Handle home button touch when victory card is displayed
+        else if touchedNodes[0].name == "homeButton" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let currentVC = self.viewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "HomeScreenViewController")
+            self.removeAllChildren()
+            currentVC?.present(destinationVC, animated: true, completion: nil)
+            
+        } // Handle card touches during game
         
     }
     
