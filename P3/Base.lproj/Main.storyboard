@@ -27,6 +27,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hx-7j-g2Q">
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="presentation" id="5JI-Pf-dJL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -294,7 +297,7 @@
         <image name="shapes_btn" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z3S-Gx-Gjg"/>
+        <segue reference="5JI-Pf-dJL"/>
         <segue reference="375-KJ-ypd"/>
     </inferredMetricsTieBreakers>
 </document>
