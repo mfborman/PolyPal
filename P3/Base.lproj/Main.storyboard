@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -224,14 +224,14 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xme-HS-kU1">
                                 <rect key="frame" x="-44" y="69" width="581" height="630"/>
-                                <state key="normal" title="4x4" image="four_by_four"/>
+                                <state key="normal" image="four_by_four"/>
                                 <connections>
                                     <segue destination="mh9-ub-Jwz" kind="presentation" identifier="4by4MatchingGame" id="2jP-cq-crE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liK-GI-Hc8">
                                 <rect key="frame" x="468" y="69" width="581" height="630"/>
-                                <state key="normal" title="6x6" image="six_by_six"/>
+                                <state key="normal" image="six_by_six"/>
                                 <connections>
                                     <segue destination="mh9-ub-Jwz" kind="presentation" identifier="6by6MatchingGame" id="375-KJ-ypd"/>
                                 </connections>
