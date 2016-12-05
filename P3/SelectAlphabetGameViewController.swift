@@ -27,7 +27,7 @@ class SelectAlphabetGameViewController: UIViewController {
             let matchingGameVC = (segue.destination as! AlphabetGameViewController)
             
         } else if (segue.identifier == "segueToNumberGame") {
-            let matchingGameVC = (segue.destination as! AlphabetGameViewController)
+            let matchingGameVC = (segue.destination as! NumberGameViewController)
         }
     }
     
