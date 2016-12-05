@@ -21,6 +21,8 @@ class ShapeGameScene: SKScene {
     var shapesOnScreen: [String] = []
     var holesOnScreen: [String] = []
     var correctMatches: [String] = []
+
+    var shapeStartingLocations: [CGPoint] = []
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +76,7 @@ class ShapeGameScene: SKScene {
             sprite.position = CGPoint(x: size.width/2 * xOffset, y: size.height * yOffset)
             sprite.zPosition = 2.0
             
+            shapeStartingLocations[i] = sprite.position//List of where each shape (0-3) began
             self.addChild(sprite)
         }
         //Generates the hole sprites on the screen
@@ -122,11 +125,15 @@ class ShapeGameScene: SKScene {
         
         let touchedNodes = self.nodes(at: positionInScene)//the nodes being touched on the display
         
+        
         if nodeIsAShape(node: touchedNodes[0] as! SKSpriteNode){//if there is a shape being touched
             if nodeIsAHole(node: touchedNodes[1] as! SKSpriteNode) && getShapeOfHole(node: touchedNodes[1] as! SKSpriteNode) == (getShape(node: touchedNodes[0] as! SKSpriteNode)) {
                 //CORRECT MATCH
                 if !correctMatches.contains(getShape(node: touchedNodes[0] as! SKSpriteNode)) {
                     correctMatches.append(getShape(node: touchedNodes[0] as! SKSpriteNode))
+                    
+                    //Animate correct placement
+                    correctShapePlacement(shape: touchedNodes[0] as! SKSpriteNode, hole: touchedNodes[1] as! SKSpriteNode)
                 }
                 touchedNodes[0].run(returnToInitialState(sprite: touchedNodes[0] as! SKSpriteNode))
                 
@@ -256,6 +263,59 @@ class ShapeGameScene: SKScene {
 
         panForTranslation(translation)
     }
+    
+    
+    
+    /*
+     *
+     * Animations for correct and incorrect shape placement
+     *
+     */
+    
+    
+    func correctShapePlacement(shape: SKSpriteNode, hole: SKSpriteNode) {
+        let animationTime = 0.8
+        
+        //Move shape over hole
+        let holeLocation = hole.position
+        let cover = SKAction.move(to: holeLocation, duration: animationTime)
+        let spin = SKAction.rotate(byAngle: 2.2, duration: animationTime)
+        let fall = SKAction.scale(by: 0.1, duration: animationTime)
+        let leave = SKAction.removeFromParent()
+        let spinFall = SKAction.group([spin, fall])
+        let coverAndFall = SKAction.sequence([cover, spinFall, leave])
+        shape.run(coverAndFall)
+    }
+    
+    func incorrectShapePlacement(shape: SKSpriteNode, hole: SKSpriteNode) {
+        let animationTime = 0.8
+        //Send shape back to original position
+        let holeLocation = hole.position
+        let cover = SKAction.move(to: holeLocation, duration: animationTime)
+        
+        // Move shape back to starting location
+        let shapeLocation = shape.position
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: shapeLocation.x, y: shapeLocation.y))
+        path.addLine(to: CGPoint(x: shapeStartingLocations[0].x, y: shapeStartingLocations[0].y))
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: animationTime)
+        
+        // Flip animal 360 degrees
+        let flip = SKAction.rotate(byAngle: degToRad(360), duration: animationTime)
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
