@@ -21,7 +21,9 @@ class ShapeGameScene: SKScene {
     var shapesOnScreen: [String] = []
     var holesOnScreen: [String] = []
     var correctMatches: [String] = []
+    var viewController: UIViewController?
 
+    
     var shapeStartingLocations = [CGPoint?](repeating: nil, count:4)
     
     
@@ -124,8 +126,26 @@ class ShapeGameScene: SKScene {
         let positionInScene = touch.location(in: self)
         
         let touchedNodes = self.nodes(at: positionInScene)//the nodes being touched on the display
+    
+        let touchedNode = self.atPoint(positionInScene)
         
-        
+        // Handle replay button touch when victory card is displayde
+        if touchedNode.name == "replayButton" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let currentVC = self.viewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectMatchingGameViewController")
+            self.removeAllChildren()
+            currentVC?.present(destinationVC, animated: true, completion: nil)
+            
+        } // Handle home button touch when victory card is displayed
+        else if touchedNode.name == "homeButton" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let currentVC = self.viewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "HomeScreenViewController")
+            self.removeAllChildren()
+            currentVC?.present(destinationVC, animated: true, completion: nil)
+        }
+    
         if nodeIsAShape(node: touchedNodes[0] as! SKSpriteNode){//if there is a shape being touched
             if nodeIsAHole(node: touchedNodes[1] as! SKSpriteNode) && getShapeOfHole(node: touchedNodes[1] as! SKSpriteNode) == (getShape(node: touchedNodes[0] as! SKSpriteNode)) {
                 //CORRECT MATCH
@@ -138,6 +158,7 @@ class ShapeGameScene: SKScene {
                 touchedNodes[0].run(returnToInitialState(sprite: touchedNodes[0] as! SKSpriteNode))
                 
                 if correctMatches.count == 4 {
+                    self.run(displayVictoryCard())
                     print("Winner! You have matched all the shapes with their respective holes")
                 }
                 
@@ -148,9 +169,11 @@ class ShapeGameScene: SKScene {
                 incorrectShapePlacement(shape: touchedNodes[0] as! SKSpriteNode, hole: touchedNodes[1] as! SKSpriteNode)
                 
                 touchedNodes[0].run(flip)
-                
             }
         }
+        
+        
+        
         
     }
     
@@ -316,12 +339,43 @@ class ShapeGameScene: SKScene {
     }
     
     
-    
-    
-    
-    
-    
-    
+    // Display end of game options card
+    func displayVictoryCard() -> SKAction {
+        return SKAction.run {
+            
+            // Display victory card
+            let victoryCard = SKSpriteNode(imageNamed: "matchingGameVictory")
+            let cardSizeRatio = self.frame.size.height/self.frame.size.width
+            let cardWidth = self.frame.size.width*(2/3)
+            let cardHeight = cardWidth*cardSizeRatio
+            victoryCard.size = CGSize(width: cardWidth, height: cardHeight)
+            victoryCard.zPosition = cardPriority.victory
+            victoryCard.position.x = self.frame.size.width/2
+            victoryCard.position.y = self.frame.size.height/2
+            victoryCard.name = "victoryCard"
+            self.addChild(victoryCard)
+            
+            // Create replay button
+            let replayButton = SKSpriteNode(imageNamed: "replay_btn")
+            replayButton.size = CGSize(width: cardWidth/5, height: cardHeight/4)
+            replayButton.zPosition = cardPriority.victory+1
+            replayButton.position.x = victoryCard.position.x - cardWidth/5
+            replayButton.position.y = victoryCard.position.y - cardHeight/6
+            replayButton.name = "replayButton"
+            self.addChild(replayButton)
+            
+            // Create home button
+            let homeButton = SKSpriteNode(imageNamed: "home_btn")
+            homeButton.size = CGSize(width: cardWidth/5, height: cardHeight/4)
+            homeButton.zPosition = cardPriority.victory+1
+            homeButton.position.x = victoryCard.position.x + cardWidth/5
+            homeButton.position.y = victoryCard.position.y - cardHeight/6
+            homeButton.name = "homeButton"
+            self.addChild(homeButton)
+            
+        }
+    }
+
     
     
     
