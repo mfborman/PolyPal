@@ -27,7 +27,7 @@ class Letter: SKSpriteNode {
         
         super.init(texture: nil, color: .clear, size: letterImage.size())
         
-        self.texture = SKTexture(imageNamed: letterImageName)
+        self.texture = letterImage
         let chars = letterName[1].characters.map { String($0) }
         self.name = letterName[0] + "." + ((chars.count > 1) ? chars[0] : letterName[1])
         self.zPosition = 2.0

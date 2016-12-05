@@ -17,6 +17,8 @@ class AlphabetGameScene: SKScene {
     var letterImageNames: [String] = []
     var lettersOnScreen: [String]
     var missingLetters: [MissingLetter]
+    var missingLetterCount = Int()
+    var lettersCorrectlyPlaced = Int()
     var correctMatches: [String]
     
     /*
@@ -42,7 +44,8 @@ class AlphabetGameScene: SKScene {
         let letters = 26;//letters on board
         let quiz = 5//quiz letters
         var spaceCount = 0;//quiz spaces on board
-        let missingLetterCount = 5
+        missingLetterCount = 5
+        lettersCorrectlyPlaced = 0
         let screenSize = self.frame.size
         
         self.background.name = "background"
@@ -285,13 +288,21 @@ class AlphabetGameScene: SKScene {
                     // Run Actions
                     letter.run(changeLetterColor)
                     location.run(removeSpaceWithDelay)
+                    
+                    // Make updates for correct letter placement
                     (letter as! Letter).correctPlacement = true
+                    lettersCorrectlyPlaced += 1
+                    
                 } else {
                     // Drop letter
                     letter.run(SKAction.scale(to: 1.0, duration: letterAnimationTime/5))
                 }
 
             }
+            
+        }
+        // If the game has been won
+        if lettersCorrectlyPlaced == missingLetterCount {
             
         }
         
