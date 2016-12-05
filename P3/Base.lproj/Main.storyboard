@@ -222,16 +222,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xme-HS-kU1">
-                                <rect key="frame" x="21" y="159" width="450" height="450"/>
-                                <state key="normal" title="4x4" backgroundImage="brain_btn"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xme-HS-kU1">
+                                <rect key="frame" x="-44" y="69" width="581" height="630"/>
+                                <state key="normal" title="4x4" image="four_by_four"/>
                                 <connections>
                                     <segue destination="mh9-ub-Jwz" kind="presentation" identifier="4by4MatchingGame" id="2jP-cq-crE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liK-GI-Hc8">
-                                <rect key="frame" x="533" y="159" width="450" height="450"/>
-                                <state key="normal" title="6x6" backgroundImage="animals_btn"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liK-GI-Hc8">
+                                <rect key="frame" x="468" y="69" width="581" height="630"/>
+                                <state key="normal" title="6x6" image="six_by_six"/>
                                 <connections>
                                     <segue destination="mh9-ub-Jwz" kind="presentation" identifier="6by6MatchingGame" id="375-KJ-ypd"/>
                                 </connections>
@@ -356,8 +356,10 @@
         <image name="animals_btn" width="450" height="450"/>
         <image name="back_btn" width="100" height="100"/>
         <image name="brain_btn" width="450" height="450"/>
+        <image name="four_by_four" width="550" height="630"/>
         <image name="letters_btn" width="450" height="450"/>
         <image name="shapes_btn" width="450" height="450"/>
+        <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5JI-Pf-dJL"/>

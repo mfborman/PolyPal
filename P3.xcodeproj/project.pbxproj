@@ -43,6 +43,7 @@
 		A2A27EFB1DD22BF600107E3F /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A27EFA1DD22BF600107E3F /* GameBoard.swift */; };
 		A2B5DDFC1DCA8E5C001CCD22 /* MatchingGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5DDFB1DCA8E5C001CCD22 /* MatchingGameScene.swift */; };
 		A2C34DC01DF3960300ACB279 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C34DBF1DF3960300ACB279 /* Letter.swift */; };
+		A2C858DD1DF61F5E00EB2755 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C858DC1DF61F5E00EB2755 /* Number.swift */; };
 		A2D6CCDA1DF4C8F70091C5E0 /* SelectMatchingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D6CCD91DF4C8F70091C5E0 /* SelectMatchingGameViewController.swift */; };
 		A2DD64B11DC2FD0000D0C073 /* ShapeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD64B01DC2FD0000D0C073 /* ShapeGameViewController.swift */; };
 		A2DD64B31DC3003D00D0C073 /* ShapeGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD64B21DC3003D00D0C073 /* ShapeGameScene.swift */; };
@@ -109,6 +110,7 @@
 		A2A27EFA1DD22BF600107E3F /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		A2B5DDFB1DCA8E5C001CCD22 /* MatchingGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingGameScene.swift; sourceTree = "<group>"; };
 		A2C34DBF1DF3960300ACB279 /* Letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		A2C858DC1DF61F5E00EB2755 /* Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		A2D6CCD91DF4C8F70091C5E0 /* SelectMatchingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMatchingGameViewController.swift; sourceTree = "<group>"; };
 		A2DD64B01DC2FD0000D0C073 /* ShapeGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeGameViewController.swift; sourceTree = "<group>"; };
 		A2DD64B21DC3003D00D0C073 /* ShapeGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeGameScene.swift; sourceTree = "<group>"; };
@@ -262,15 +264,32 @@
 		A21D1A171DCBC92A0028C430 /* Alphabet Game */ = {
 			isa = PBXGroup;
 			children = (
+				A2C858DA1DF61E5B00EB2755 /* Letter Game */,
+				A2C858D91DF61E3900EB2755 /* Number Game */,
+				A2993E4F1DF5EDC4004D18C1 /* SelectAlphabetGameViewController.swift */,
+			);
+			name = "Alphabet Game";
+			sourceTree = "<group>";
+		};
+		A2C858D91DF61E3900EB2755 /* Number Game */ = {
+			isa = PBXGroup;
+			children = (
+				A2993E531DF612C4004D18C1 /* NumberGameScene.swift */,
+				A2993E511DF6113E004D18C1 /* NumberGameViewController.swift */,
+				A2C858DC1DF61F5E00EB2755 /* Number.swift */,
+			);
+			name = "Number Game";
+			sourceTree = "<group>";
+		};
+		A2C858DA1DF61E5B00EB2755 /* Letter Game */ = {
+			isa = PBXGroup;
+			children = (
 				A21D1A131DCBC9160028C430 /* AlphabetGameScene.swift */,
 				A21D1A151DCBC9250028C430 /* AlphabetGameViewController.swift */,
 				A2E2CF3F1DD66203009B4641 /* MissingLetter.swift */,
 				A2C34DBF1DF3960300ACB279 /* Letter.swift */,
-				A2993E4F1DF5EDC4004D18C1 /* SelectAlphabetGameViewController.swift */,
-				A2993E511DF6113E004D18C1 /* NumberGameViewController.swift */,
-				A2993E531DF612C4004D18C1 /* NumberGameScene.swift */,
 			);
-			name = "Alphabet Game";
+			name = "Letter Game";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +458,7 @@
 				A250A03E1DDAADDD009D722D /* SegueToAnimalGame.swift in Sources */,
 				A2E2CF401DD66203009B4641 /* MissingLetter.swift in Sources */,
 				A21D1A0C1DCA91F70028C430 /* Card.swift in Sources */,
+				A2C858DD1DF61F5E00EB2755 /* Number.swift in Sources */,
 				A2993E541DF612C4004D18C1 /* NumberGameScene.swift in Sources */,
 				A21D1A161DCBC9250028C430 /* AlphabetGameViewController.swift in Sources */,
 				A21D1A121DCB04890028C430 /* CardPair.swift in Sources */,
