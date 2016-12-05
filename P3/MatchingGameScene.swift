@@ -194,7 +194,7 @@ class MatchingGameScene: SKScene {
             self.removeAllChildren()
             currentVC?.present(destinationVC, animated: true, completion: nil)
             
-        } // Handle home button touch when victory card is displayde
+        } // Handle home button touch when victory card is displayed
         else if touchedNode.name == "homeButton" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let currentVC = self.viewController
