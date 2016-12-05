@@ -173,7 +173,7 @@ class MatchingGameScene: SKScene {
             if self.pair.matches() {
                 self.numberOfMatches += 1
             }
-            if  self.numberOfMatches == 1 {//self.uniqueCardCount {
+            if  self.numberOfMatches == self.uniqueCardCount {
                 
                 self.run(self.displayVictoryCard())
             }
