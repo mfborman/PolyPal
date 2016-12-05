@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "P3/AnimalGameScene.swift"
-            timestampString = "502612694.204963"
+            timestampString = "502673744.362701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "init(size:)"
             landmarkType = "7">
          </BreakpointContent>

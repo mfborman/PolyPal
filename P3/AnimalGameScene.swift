@@ -50,6 +50,7 @@ class AnimalGameScene: SKScene {
         let barnX = screenSize.width * (0.75)
         let barnY = screenSize.height * (0.35)
         let spriteSizeRatio = barnSprite.size.height/barnSprite.size.width
+        let labelFont = UIFont(name: "Noteworthy-bold", size: 50)
         barnSprite.name = "barn"
         barnSprite.size.height = screenSize.height * (0.4)
         barnSprite.size.width = barnSprite.size.height * spriteSizeRatio
@@ -99,7 +100,7 @@ class AnimalGameScene: SKScene {
         }
 
         // Add name label for target animal
-        self.targetAnimalLabel = SKLabelNode(fontNamed: "Noteworthy-bold")
+        self.targetAnimalLabel = SKLabelNode(fontNamed: labelFont?.fontName)
         self.targetAnimalLabel.position = CGPoint(x: barnX, y: barnY+barnSprite.size.height*(3/5))
         self.targetAnimalLabel.text = animalsOnScreen[0]
         self.targetAnimalLabel.fontSize = 50

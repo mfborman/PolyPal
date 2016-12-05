@@ -33,6 +33,7 @@ class NumberGameScene: SKScene {
     
     override init(size: CGSize) {
         
+        let labelFont = UIFont(name: "Noteworthy-bold", size: 50)
         digits = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Zero"]
         numbers = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
         numbersToUse = []
@@ -67,10 +68,14 @@ class NumberGameScene: SKScene {
         
         // Display Number Name
         numberWordLabel.text = correctNumber
-        numberWordLabel.fontName = "Noteworthy-bold"
+        numberWordLabel.fontName = labelFont?.fontName
         numberWordLabel.fontSize = 50
         numberWordLabel.position = CGPoint(x: screenWidth/2, y: screenHeight*(5/6))
         numberWordLabel.zPosition = 2.0
         background.addChild(numberWordLabel)
+        
+        for i in 0..<numbersToUse.count {
+            //let number = SKSpriteNode
+        }
     }
 }
