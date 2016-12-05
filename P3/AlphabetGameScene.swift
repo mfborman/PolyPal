@@ -260,7 +260,7 @@ class AlphabetGameScene: SKScene {
             //TODO: MAKING LETTERS MOVE AWAY AND FADE AFTER GAME VICTORY. WHILE THIS HAPPENS CHALKBOARD GETS REPLAY AND HOME BUTTONS 'WRITTEN' ON IT
             let rand = Int(arc4random_uniform(UInt32(360)))
             let hypotenuse = sqrt(pow((self.frame.size.width), 2) + pow((self.frame.size.height), 2))
-            let moveAway = SKAction.move(by: <#T##CGVector#>, duration: <#T##TimeInterval#>)
+            //let moveAway = SKAction.move(by: <#T##CGVector#>, duration: <#T##TimeInterval#>)
 
         }
     }
