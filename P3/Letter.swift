@@ -19,7 +19,7 @@ class Letter: SKSpriteNode {
     init(spriteName: String) {
         
         letterName = spriteName.components(separatedBy: ".")
-        let letterImageName = letterName[0]=="space" ? "space" : letterName[1]
+        let letterImageName = (letterName[0]=="space") ? "space" : letterName[1]
         
         letterImage = SKTexture(imageNamed: letterImageName)
         
@@ -29,7 +29,7 @@ class Letter: SKSpriteNode {
         
         self.texture = SKTexture(imageNamed: letterImageName)
         let chars = letterName[1].characters.map { String($0) }
-        self.name = (chars.count > 1) ? chars[0] : letterName[1]
+        self.name = letterName[0] + "." + ((chars.count > 1) ? chars[0] : letterName[1])
         self.zPosition = 2.0
     }
     

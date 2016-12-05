@@ -185,17 +185,11 @@ class AlphabetGameScene: SKScene {
     
     func nodeIsQuizLetter(node: SKSpriteNode) -> Bool {
         let nodeName = node.name?.components(separatedBy: ".")
-        if nodeName?[0] == kQuizNodeName {
+        let nodeType = nodeName?[0]
+        if nodeType == kQuizNodeName {
             return true
         } else {
             return false
-        }
-    }
-    
-    func animateForCorrectPlacement(letter: SKSpriteNode) -> SKAction {
-        return SKAction.run {
-            let wiggle = SKAction.rotate(byAngle: 0.2, duration: 1)
-            letter.run(wiggle)
         }
     }
     
@@ -210,10 +204,9 @@ class AlphabetGameScene: SKScene {
     func selectNodeForTouch(_ touchLocation: CGPoint) {
         
         let touchedNode = self.atPoint(touchLocation)
-        if touchedNode is Letter {
-            if !selectedNode.isEqual(touchedNode) && !(touchedNode as! Letter).isCorrectlyPlaced() {
-                selectedNode = touchedNode as! SKSpriteNode
-            }
+        if nodeIsQuizLetter(node: touchedNode as! SKSpriteNode) {
+            selectedNode = touchedNode as! SKSpriteNode
+            selectedNode.run(SKAction.scale(to: 1.2, duration: 0.05))
         }
     }
     
@@ -240,54 +233,63 @@ class AlphabetGameScene: SKScene {
         let touchedNodes = self.nodes(at: positionInScene)
         var letter = SKSpriteNode()
         var location = SKSpriteNode()
+        let letterAnimationTime = 1.0//0.5
+        let spaceAnimationTime = letterAnimationTime/2
         
-        if (touchedNodes[0] is SKSpriteNode && touchedNodes[1] is SKSpriteNode) {
-            letter = touchedNodes[0] as! SKSpriteNode
-            location = touchedNodes[1] as! SKSpriteNode
-        }
-        
-        
-        if letterPlacedCorrectly(letter: letter, location: location) {
-            print(getLetter(node: letter) + " " + getLetter(node: location))
-            let letterAnimationTime = 1.0//0.5
-            let spaceAnimationTime = letterAnimationTime/2
+        if touchedNodes.count > 1 {
+            if touchedNodes[0] is SKSpriteNode && touchedNodes[1] is SKSpriteNode {
+                letter = touchedNodes[0] as! SKSpriteNode
+                location = touchedNodes[1] as! SKSpriteNode
+                
+                if letterPlacedCorrectly(letter: letter, location: location) {
+                    
+                    let properLocation = CGPoint(x: location.position.x, y: location.position.y)
+                    
+                    let aboveProperLocation = CGPoint(x: properLocation.x, y: properLocation.y+location.size.height/2)
+                    
+                    // Move letter above its space
+                    let moveLetterAbove = SKAction.move(to: aboveProperLocation, duration: letterAnimationTime/5)
+                    let dropLetter = SKAction.scale(to: 1.0, duration: letterAnimationTime/5)
+                    let moveAboveProperLocation = SKAction.group([moveLetterAbove, dropLetter])
+                    
+                    // Pause letter
+                    let dramaticPause = SKAction.wait(forDuration: letterAnimationTime/10)
+                    
+                    // Slam letter
+                    let dipBelowProperLocation = SKAction.moveTo(y: properLocation.y-location.size.height/10, duration: letterAnimationTime/10)
+                    let bounceAboveLocation = SKAction.moveTo(y: properLocation.y+location.size.height/20, duration: letterAnimationTime/8)
+                    let moveToLocation = SKAction.move(to: properLocation, duration: letterAnimationTime/5)
+                    let slam = SKAction.sequence([dipBelowProperLocation, bounceAboveLocation, moveToLocation])
+                    
+                    // Place letter properly
+                    let fadeOutLetter = SKAction.fadeOut(withDuration: letterAnimationTime/5)
+                    let fadeIn = SKAction.fadeIn(withDuration: letterAnimationTime/5)
+                    let whitenLetter = SKAction.setTexture(SKTexture(imageNamed: getLetter(node: letter)))
+                    
+                    // Delay the space actions
+                    let delayRemoval = SKAction.wait(forDuration: spaceAnimationTime*0.79)
+                    
+                    // Remove space
+                    let fadeOutSpace = SKAction.fadeOut(withDuration: spaceAnimationTime/10)
+                    let fallOut = SKAction.moveBy(x: 0.0, y: -location.size.height/3, duration: spaceAnimationTime/10)
+                    let removeSpace = SKAction.group([fadeOutSpace, fallOut])
+                    
+                    // Entire letter animation
+                    let changeLetterColor = SKAction.sequence([moveAboveProperLocation, dramaticPause, slam, fadeOutLetter, whitenLetter, fadeIn])
+                    
+                    // Entire space animation
+                    let removeSpaceWithDelay = SKAction.sequence([delayRemoval, removeSpace])
+                    
+                    // Run Actions
+                    letter.run(changeLetterColor)
+                    location.run(removeSpaceWithDelay)
+                } else {
+                    // Drop letter
+                    letter.run(SKAction.scale(to: 1.0, duration: letterAnimationTime/5))
+                }
+
+            }
             
-            
-            let properLocation = CGPoint(x: location.position.x, y: location.position.y)
-        
-            let aboveProperLocation = CGPoint(x: properLocation.x, y: properLocation.y+location.size.height/2)
-            
-            // Letter actions
-            let moveAboveProperLocation = SKAction.move(to: aboveProperLocation, duration: letterAnimationTime/5)
-            
-            let dramaticPause = SKAction.wait(forDuration: letterAnimationTime/10)
-            
-            let dipBelowProperLocation = SKAction.moveTo(y: properLocation.y-location.size.height/10, duration: letterAnimationTime/10)
-            let moveToLocation = SKAction.move(to: properLocation, duration: letterAnimationTime/10)
-            let slam = SKAction.sequence([dipBelowProperLocation, moveToLocation])
-            
-            let fadeOutLetter = SKAction.fadeOut(withDuration: letterAnimationTime/5)
-            
-            let fadeIn = SKAction.fadeIn(withDuration: letterAnimationTime/5)
-            
-            let whitenLetter = SKAction.setTexture(SKTexture(imageNamed: getLetter(node: letter)))
-            
-            // Space actions
-            let delayRemoval = SKAction.wait(forDuration: spaceAnimationTime)
-            
-            let fadeOutSpace = SKAction.fadeOut(withDuration: spaceAnimationTime/20)
-            let fallOut = SKAction.moveBy(x: 0.0, y: -location.size.height/3, duration: spaceAnimationTime/20)
-            let removeSpace = SKAction.group([fadeOutSpace, fallOut])
-            
-            // Complete letter animation
-            let changeLetterColor = SKAction.sequence([moveAboveProperLocation, dramaticPause, slam, fadeOutLetter, whitenLetter, fadeIn])
-            
-            // Complete space animation
-            let removeSpaceWithDelay = SKAction.sequence([delayRemoval, removeSpace])
-            
-            // Run Actions
-            letter.run(changeLetterColor)
-            location.run(removeSpaceWithDelay)
         }
         
     }
