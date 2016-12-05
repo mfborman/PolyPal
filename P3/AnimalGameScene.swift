@@ -319,13 +319,6 @@ class AnimalGameScene: SKScene {
     }
     
     /*
-     * Helper method for shake animation which converts degrees to radians
-     */
-    func degToRad(_ degree: Double) -> CGFloat {
-        return CGFloat(Double(degree) / 180.0 * M_PI)
-    }
-    
-    /*
      *
      */
     func selectNodeForTouch(_ touchLocation: CGPoint) {

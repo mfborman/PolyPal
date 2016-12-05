@@ -10,6 +10,13 @@ import Foundation
 import AVFoundation
 import SpriteKit
 
+/*
+ * Helper method which converts degrees to radians
+ */
+func degToRad(_ degree: Double) -> CGFloat {
+    return CGFloat(Double(degree) / 180.0 * M_PI)
+}
+
 // Define zPositions for matching game
 struct cardPriority {
     static let background: CGFloat = 0.0

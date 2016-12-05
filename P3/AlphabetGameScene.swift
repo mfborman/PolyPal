@@ -6,6 +6,8 @@
 //  Copyright © 2016 Tony Branson. All rights reserved.
 //
 import SpriteKit
+import Foundation
+
 class AlphabetGameScene: SKScene {
     
     let kLetterNodeName = "letter"
@@ -16,6 +18,7 @@ class AlphabetGameScene: SKScene {
     var selectedNode = SKSpriteNode()
     var letterImageNames: [String] = []
     var lettersOnScreen: [String]
+    var correctlyPlacedLetters: [Letter]
     var missingLetters: [MissingLetter]
     var missingLetterCount = Int()
     var lettersCorrectlyPlaced = Int()
@@ -32,8 +35,9 @@ class AlphabetGameScene: SKScene {
      * Initialize the graphics of the scene
      */
     override init(size: CGSize) {
-        self.lettersOnScreen = []
-        self.missingLetters = []
+        lettersOnScreen = []
+        missingLetters = []
+        correctlyPlacedLetters = []
         correctMatches = []
         
         super.init(size: size)//cover all paths
@@ -93,7 +97,6 @@ class AlphabetGameScene: SKScene {
             }
             // Create letter sprite
             sprite = Letter(spriteName: spriteName)
-
             
             // Resize sprite based on screen size
             let spriteSizeRatio = sprite.size.height/sprite.size.width
@@ -119,13 +122,14 @@ class AlphabetGameScene: SKScene {
             
             //Finally add the sprite to the screen
             self.addChild(sprite)
-            
+            correctlyPlacedLetters.append(sprite as! Letter)
+
         }
         
         // Randomize array
         randomizeArray(&missingLetters)
         
-        //Generates the shape sprites on the screen
+        //Generates the quiz letter sprites on the screen
         for i in 0..<quiz {
             
             let sprite: SKSpriteNode
@@ -151,8 +155,15 @@ class AlphabetGameScene: SKScene {
             sprite.position = CGPoint(x: x, y: size.height * yOffset)
             sprite.zPosition = 2.0
             
-            //Finally add the sprite t
+            //Finally add the sprite
             self.addChild(sprite)
+            
+            // Add quiz letter to complete list of letters
+            for i in 0..<correctlyPlacedLetters.count {
+                if (sprite as! Letter).letter == correctlyPlacedLetters[i].letter {
+                    correctlyPlacedLetters[i] = sprite as! Letter
+                }
+            }
         }
         
     }
@@ -232,6 +243,28 @@ class AlphabetGameScene: SKScene {
         panForTranslation(translation)
     }
     
+    func handleEndGame() -> SKAction {
+        return SKAction.run {
+            // If the game has been won
+            if self.lettersCorrectlyPlaced == self.missingLetterCount {
+                for i in 0..<self.correctlyPlacedLetters.count {
+                    let imageName = self.correctlyPlacedLetters[i].letter + "3"
+                    let delay = SKAction.wait(forDuration: 0.04 * Double(i))
+                    let raise = SKAction.scale(to: 1.2, duration: 0.1)
+                    let turnGold = SKAction.setTexture(SKTexture(imageNamed: imageName))
+                    let fall = SKAction.scale(to: 1.0, duration: 0.1)
+                    let changeToGold = SKAction.sequence([delay, raise, turnGold, fall])
+                    self.correctlyPlacedLetters[i].run(changeToGold)
+                }
+            }
+            //TODO: MAKING LETTERS MOVE AWAY AND FADE AFTER GAME VICTORY. WHILE THIS HAPPENS CHALKBOARD GETS REPLAY AND HOME BUTTONS 'WRITTEN' ON IT
+            let rand = Int(arc4random_uniform(UInt32(360)))
+            let hypotenuse = sqrt(pow((self.frame.size.width), 2) + pow((self.frame.size.height), 2))
+            let moveAway = SKAction.move(by: <#T##CGVector#>, duration: <#T##TimeInterval#>)
+
+        }
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
         let positionInScene = touch.location(in: self)
@@ -285,8 +318,11 @@ class AlphabetGameScene: SKScene {
                     // Entire space animation
                     let removeSpaceWithDelay = SKAction.sequence([delayRemoval, removeSpace])
                     
+                    // Handle possible end of game scenario
+                    let handleEndGame = self.handleEndGame()
+                    
                     // Run Actions
-                    letter.run(changeLetterColor)
+                    letter.run(SKAction.sequence([changeLetterColor, handleEndGame]))
                     location.run(removeSpaceWithDelay)
                     
                     // Make updates for correct letter placement
@@ -299,10 +335,6 @@ class AlphabetGameScene: SKScene {
                 }
 
             }
-            
-        }
-        // If the game has been won
-        if lettersCorrectlyPlaced == missingLetterCount {
             
         }
         

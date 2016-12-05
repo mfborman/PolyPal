@@ -11,25 +11,29 @@ import SpriteKit
 
 class Letter: SKSpriteNode {
     
-    let image = SKTexture()
     let letterImage: SKTexture
-    let letterName: [String]
+    let fullLetterName: [String]
+    var imageIdentifier: String
+    var letter: String
     var correctPlacement: Bool
     
     init(spriteName: String) {
         
-        letterName = spriteName.components(separatedBy: ".")
-        let letterImageName = (letterName[0]=="space") ? "space" : letterName[1]
+        fullLetterName = spriteName.components(separatedBy: ".")
+        imageIdentifier = fullLetterName[1]
+        let chars = imageIdentifier.characters.map { String($0) }
+        letter = chars[0]
+        
+        let letterImageName = (fullLetterName[0]=="space") ? "space" : imageIdentifier
         
         letterImage = SKTexture(imageNamed: letterImageName)
         
-        correctPlacement = (letterName[0]=="quiz") ? false : true
+        correctPlacement = (fullLetterName[0]=="quiz") ? false : true
         
         super.init(texture: nil, color: .clear, size: letterImage.size())
         
         self.texture = letterImage
-        let chars = letterName[1].characters.map { String($0) }
-        self.name = letterName[0] + "." + ((chars.count > 1) ? chars[0] : letterName[1])
+        self.name = fullLetterName[0] + "." + ((chars.count > 1) ? chars[0] : fullLetterName[1])
         self.zPosition = 2.0
     }
     
