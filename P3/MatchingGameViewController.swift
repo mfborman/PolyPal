@@ -29,6 +29,7 @@ class MatchingGameViewController: UIViewController {
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .aspectFill
         
+        scene.viewController = self
         skView.presentScene(scene)
     }
     

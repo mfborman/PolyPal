@@ -15,6 +15,7 @@ struct cardPriority {
     static let background: CGFloat = 0.0
     static let standard  : CGFloat = 5.0
     static let moving    : CGFloat = 10.0
+    static let victory   : CGFloat = 15.0
 }
 
 // Define zPositions for animal game
