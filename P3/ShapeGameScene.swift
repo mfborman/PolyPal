@@ -22,7 +22,7 @@ class ShapeGameScene: SKScene {
     var holesOnScreen: [String] = []
     var correctMatches: [String] = []
 
-    var shapeStartingLocations: [CGPoint] = []
+    var shapeStartingLocations = [CGPoint?](repeating: nil, count:4)
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -142,8 +142,11 @@ class ShapeGameScene: SKScene {
                 }
                 
             } else if nodeIsAHole(node: touchedNodes[1] as! SKSpriteNode) && getShapeOfHole(node: touchedNodes[1] as! SKSpriteNode) != getShape(node: touchedNodes[0] as! SKSpriteNode) {
-                //INCORRECT MATCH
+                //Animate incorrect placement
                 let flip = SKAction.rotate(byAngle: degToRad(360), duration: 1)
+                
+                incorrectShapePlacement(shape: touchedNodes[0] as! SKSpriteNode, hole: touchedNodes[1] as! SKSpriteNode)
+                
                 touchedNodes[0].run(flip)
                 
             }
@@ -288,6 +291,7 @@ class ShapeGameScene: SKScene {
     }
     
     func incorrectShapePlacement(shape: SKSpriteNode, hole: SKSpriteNode) {
+        
         let animationTime = 0.8
         //Send shape back to original position
         let holeLocation = hole.position
@@ -297,14 +301,18 @@ class ShapeGameScene: SKScene {
         let shapeLocation = shape.position
         let path = CGMutablePath()
         path.move(to: CGPoint(x: shapeLocation.x, y: shapeLocation.y))
-        path.addLine(to: CGPoint(x: shapeStartingLocations[0].x, y: shapeStartingLocations[0].y))
+        path.addLine(to: CGPoint(x: (shapeStartingLocations[Int(arc4random_uniform(UInt32(3)))]?.x)!, y: (shapeStartingLocations[Int(arc4random_uniform(UInt32(3)))]?.y)!))
         let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: animationTime)
         
         // Flip animal 360 degrees
         let flip = SKAction.rotate(byAngle: degToRad(360), duration: animationTime)
         
+        // Execute animations
+        let returnShape = SKAction.group([followLine, flip])
+        let finalSequence = SKAction.sequence([returnShape, returnToInitialState(sprite: selectedNode)])
         
-        
+        selectedNode.run(cover)
+        selectedNode.run(finalSequence)
     }
     
     
