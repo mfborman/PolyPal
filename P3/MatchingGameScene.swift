@@ -11,11 +11,13 @@ import Foundation
 
 class MatchingGameScene: SKScene {
     
+    var viewController: UIViewController?
     var pair : CardPair
     var nilCard = Card(cardType: "")
     var selectedCard: Card
     var boardSize6by6 = Bool()
     var generatedCards: [Card]
+    var cardsToGenerate: [String]
     var uniqueCardCount = Int()
     var numberOfMatches = Int()
     var screenSize = CGSize()
@@ -26,6 +28,7 @@ class MatchingGameScene: SKScene {
         pair = CardPair()
         selectedCard = nilCard
         generatedCards = []
+        cardsToGenerate = []
 
         super.init(size: size)
         
@@ -33,7 +36,7 @@ class MatchingGameScene: SKScene {
     
     func settup() {
         // Define basic variables
-        let cardImageList = ["caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera", "caterpillar", "cellphone", "football", "car", "mug", "tent", "pen", "camera", "car", "mug"]
+        let cardImageList = ["apple", "backpack", "camera", "car", "caterpillar", "cellphone", "dog", "football", "guitar", "hamburger", "hat", "mug", "pen", "schoolbus", "tent", "toaster", "vacuum", "whistle"]
         let numberOfCards = boardSize6by6 ? 36 : 16
         uniqueCardCount = numberOfCards/2
         numberOfMatches = 0
@@ -45,10 +48,19 @@ class MatchingGameScene: SKScene {
         let gameBoard = GameBoard(width: screenWidth, height: screenHeight, boardSize6by6: boardSize6by6)
         
         // Create cards in array
-        for i in 0..<uniqueCardCount {
+        while cardsToGenerate.count < uniqueCardCount {
             
+            var imageName: String
+            repeat {
+                imageName = cardImageList[Int(arc4random_uniform(UInt32(uniqueCardCount)))]
+            } while cardsToGenerate.contains(imageName)
+            cardsToGenerate.append(imageName)
+            
+        }
+        for i in 0..<cardsToGenerate.count {
+        
             // Set up card
-            let card = Card(cardType: cardImageList[i])
+            let card = Card(cardType: cardsToGenerate[i])
             //TODO: Remake cards to match ratios of screen so we don't have to
             let cardSizeRatio = screenHeight/screenWidth
             let cardWidth = gameBoard.width/CGFloat(sqrt(Double(numberOfCards)))
@@ -176,11 +188,19 @@ class MatchingGameScene: SKScene {
         
         // Handle replay button touch when victory card is displayde
         if touchedNode.name == "replayButton" {
-        
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let currentVC = self.viewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectMatchingGameViewController")
+            self.removeAllChildren()
+            currentVC?.present(destinationVC, animated: true, completion: nil)
             
         } // Handle home button touch when victory card is displayde
         else if touchedNode.name == "homeButton" {
-            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let currentVC = self.viewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "HomeScreenViewController")
+            self.removeAllChildren()
+            currentVC?.present(destinationVC, animated: true, completion: nil)
             
         } // Handle card touches during game
         else if touchedNode is Card {
