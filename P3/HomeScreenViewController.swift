@@ -17,8 +17,7 @@ class HomeScreenViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        startMusic()//NEW
-
+        playMusic(filename: "Home_Screenn.mp3");//NEW
         // Do any additional setup after loading the view.
     }
 
@@ -38,7 +37,4 @@ class HomeScreenViewController: UIViewController {
     }
     */
     
-    func startMusic(){
-        playMusic(filename: "Home_Screenn.mp3");//NEW
-    }
 }

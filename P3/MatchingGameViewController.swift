@@ -11,6 +11,9 @@ import SpriteKit
 
 class MatchingGameViewController: UIViewController {
     
+    @IBAction func backButton(_ sender: Any) {
+        playMusic(filename: "Home_Screenn.mp3")
+    }
     var boardSize6by6 = Bool()
     
     override func viewWillLayoutSubviews() {

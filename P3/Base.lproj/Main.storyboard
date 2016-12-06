@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XZd-8G-SQk">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XZd-8G-SQk">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -430,6 +430,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
+                                    <action selector="backButton:" destination="mh9-ub-Jwz" eventType="touchUpInside" id="cZv-Y8-hHt"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="z3S-Gx-Gjg"/>
                                 </connections>
                             </button>
@@ -460,7 +461,7 @@
         <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mac-EM-0Fv"/>
         <segue reference="375-KJ-ypd"/>
+        <segue reference="z3S-Gx-Gjg"/>
     </inferredMetricsTieBreakers>
 </document>

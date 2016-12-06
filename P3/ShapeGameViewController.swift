@@ -12,7 +12,9 @@ import SpriteKit
 class ShapeGameViewController: UIViewController {
     
     
-    @IBAction func backButtonPressed(_ sender: UIButton) {
+    @IBAction func backButtonPressed(_
+        sender: UIButton) {
+        playMusic(filename: "Home_Screenn.mp3")
         print("HIHIHIHIIHI")
     }
     
