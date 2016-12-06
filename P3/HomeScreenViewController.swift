@@ -9,7 +9,12 @@
 import UIKit
 
 class HomeScreenViewController: UIViewController {
-
+    
+    @IBAction func clearData(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "loggedIn")
+        defaults.set("", forKey: "textTest")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         startMusic()//NEW

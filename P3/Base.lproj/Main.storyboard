@@ -177,19 +177,31 @@
                                     <segue destination="BV1-FR-VrT" kind="presentation" id="dpC-tn-Jym"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="884-mp-rHl">
+                                <rect key="frame" x="986" y="738" width="30" height="30"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearData:" destination="nuJ-47-VJY" eventType="touchUpInside" id="owl-Bt-Peq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aBX-AX-5nB" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="0.5" id="9oU-Ci-Uho"/>
+                            <constraint firstItem="884-mp-rHl" firstAttribute="bottom" secondItem="MYA-H9-Yzs" secondAttribute="top" id="Eec-7k-abu"/>
                             <constraint firstItem="cw0-mt-ebU" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="F4a-U8-fco"/>
                             <constraint firstItem="tqa-jW-dLc" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="Fdh-XI-w5Y"/>
                             <constraint firstItem="cw0-mt-ebU" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="1.5" id="HP0-Oh-kNw"/>
+                            <constraint firstItem="884-mp-rHl" firstAttribute="leading" secondItem="Zy6-CU-bIu" secondAttribute="trailing" constant="7" id="MKt-1J-a7w"/>
                             <constraint firstItem="Zy6-CU-bIu" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="Nfa-4T-xte"/>
                             <constraint firstItem="tqa-jW-dLc" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="1.45" id="Q5f-Tg-LAf"/>
                             <constraint firstItem="tqa-jW-dLc" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="0.5" id="Scs-md-a13"/>
                             <constraint firstItem="cw0-mt-ebU" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="0.55" id="esq-wV-nJZ"/>
                             <constraint firstItem="aBX-AX-5nB" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="0.55" id="gBK-E2-qX7"/>
+                            <constraint firstAttribute="trailing" secondItem="884-mp-rHl" secondAttribute="trailing" id="ghT-6h-GpF"/>
                             <constraint firstItem="Zy6-CU-bIu" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="1.5" id="iyz-NV-WMn"/>
                             <constraint firstItem="aBX-AX-5nB" firstAttribute="height" secondItem="csP-qZ-8zB" secondAttribute="height" multiplier="0.45" id="lk8-92-VDi"/>
                             <constraint firstItem="Zy6-CU-bIu" firstAttribute="centerX" secondItem="csP-qZ-8zB" secondAttribute="centerX" multiplier="1.45" id="uti-xR-NAr"/>
