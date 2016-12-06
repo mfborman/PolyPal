@@ -14,8 +14,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "loggedIn") == true {
+            print(defaults.string(forKey: "textTest"))
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "HomeScreenViewController")
+            self.present(destinationVC, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +38,10 @@ class LoginViewController: UIViewController {
         if (segue.identifier == "loginSubmissionSegue") {
             //let homeScreenVC = (segue.destination as! HomeScreenViewController)
             let textBoxText = self.parentTextField.text
-            print(textBoxText)
+            let defaults = UserDefaults.standard
+            defaults.set(textBoxText, forKey: "textTest")
+            defaults.set(true, forKey: "loggedIn")
+            defaults.synchronize()
         }
     }
 }
