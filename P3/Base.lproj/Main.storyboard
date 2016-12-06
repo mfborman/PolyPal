@@ -97,6 +97,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
+                                    <action selector="backButton:" destination="Bem-m5-yye" eventType="touchUpInside" id="2Xz-mJ-0rn"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="5JI-Pf-dJL"/>
                                 </connections>
                             </button>
@@ -264,7 +265,6 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="9ud-sM-yJW"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="BT2-mM-C9m"/>
                                 </connections>
                             </button>
@@ -431,7 +431,6 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButton:" destination="mh9-ub-Jwz" eventType="touchUpInside" id="cZv-Y8-hHt"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="z3S-Gx-Gjg"/>
                                 </connections>
                             </button>
@@ -463,6 +462,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="375-KJ-ypd"/>
-        <segue reference="BT2-mM-C9m"/>
+        <segue reference="5JI-Pf-dJL"/>
     </inferredMetricsTieBreakers>
 </document>
