@@ -406,7 +406,7 @@ class AlphabetGameScene: SKScene {
         if touchedNodes[0].name == "replayButton" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let currentVC = self.viewController
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectMatchingGameViewController")
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectAlphabetGameViewController")
             self.removeAllChildren()
             currentVC?.present(destinationVC, animated: true, completion: nil)
             

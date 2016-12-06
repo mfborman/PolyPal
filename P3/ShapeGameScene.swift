@@ -133,7 +133,7 @@ class ShapeGameScene: SKScene {
         if touchedNode.name == "replayButton" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let currentVC = self.viewController
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SelectMatchingGameViewController")
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "ShapeGameViewController")
             self.removeAllChildren()
             currentVC?.present(destinationVC, animated: true, completion: nil)
             

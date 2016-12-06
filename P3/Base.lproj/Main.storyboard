@@ -15,7 +15,7 @@
         <!--Alphabet Game View Controller-->
         <scene sceneID="ihu-tX-jMG">
             <objects>
-                <viewController id="Bem-m5-yye" customClass="AlphabetGameViewController" customModule="P3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlphabetGameViewController" id="Bem-m5-yye" customClass="AlphabetGameViewController" customModule="P3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="igK-Qw-dm7"/>
                         <viewControllerLayoutGuide type="bottom" id="sah-bj-Dhv"/>
@@ -136,7 +136,7 @@
         <!--Shape Game View Controller-->
         <scene sceneID="aQ7-xk-Pe1">
             <objects>
-                <viewController id="iTk-wN-ZOM" customClass="ShapeGameViewController" customModule="P3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShapeGameViewController" id="iTk-wN-ZOM" customClass="ShapeGameViewController" customModule="P3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z8D-1j-gcg"/>
                         <viewControllerLayoutGuide type="bottom" id="Qcf-Zy-PRS"/>
