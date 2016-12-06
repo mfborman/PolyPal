@@ -11,7 +11,8 @@ import SpriteKit
 
 class AnimalGameViewController: UIViewController {
     
-    @IBAction func returnToHomeScreen(_ segue:UIStoryboardSegue) {
+   @IBAction func returnToHomeScreen(_ segue:UIStoryboardSegue) {
+    
     }
     @IBAction func backButton(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)

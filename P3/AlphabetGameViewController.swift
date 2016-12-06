@@ -11,6 +11,7 @@ class AlphabetGameViewController: UIViewController {
     
     
     @IBAction func backButton(_ sender: Any) {
+        playMusic(filename: "Home_Screenn.mp3")
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
     override func viewWillLayoutSubviews() {

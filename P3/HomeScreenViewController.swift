@@ -18,9 +18,7 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playMusic(filename: "Home_Screenn.mp3");//NEW
-        
         // Do any additional setup after loading the view.
-        
     }
 
     override func didReceiveMemoryWarning() {
