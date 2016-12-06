@@ -60,6 +60,9 @@ class AlphabetGameScene: SKScene {
         self.background.zPosition = 0.0
         self.addChild(background)
         
+        // Play Music
+        playMusic(filename: "Alphabet_Gamee")
+        
         // Select random letters for the missing letter list
         repeat {
             let rand = Int(arc4random_uniform(UInt32(letters)))

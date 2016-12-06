@@ -57,6 +57,9 @@ class NumberGameScene: SKScene {
         background.zPosition = cardPriority.background
         addChild(background)
         
+        // Play Music
+        playMusic(filename: "Alphabet_Gamee")
+        
         self.run(generateGameScreen())
         
     }
@@ -119,7 +122,7 @@ class NumberGameScene: SKScene {
     
     func moveLabel() -> SKAction {
         return SKAction.run {
-            let moveLabelLeft = SKAction.moveTo(x: self.screenWidth/3, duration: self.correctNumberAnimationConstant)
+            let moveLabelLeft = SKAction.moveTo(y: self.screenHeight*(7/10), duration: self.correctNumberAnimationConstant)
             let resize = SKAction.scale(to: 0.7, duration: self.correctNumberAnimationConstant)
             let fadeOut = SKAction.fadeOut(withDuration: self.correctNumberAnimationConstant)
             let blowUp = SKAction.scale(to: 2.0, duration: self.correctNumberAnimationConstant)
@@ -133,7 +136,7 @@ class NumberGameScene: SKScene {
     
     func moveCorrectLetter() -> SKAction {
         return SKAction.run {
-            let dest = CGPoint(x: self.screenWidth*(3/4), y: self.screenHeight*(7/10))
+            let dest = CGPoint(x: self.screenWidth/2, y: self.screenHeight*(6/10))
             let moveToChalkboard = SKAction.move(to: dest, duration: self.correctNumberAnimationConstant)
             var index = 0
             while self.spritesToUse[index].name != self.correctNumber {
