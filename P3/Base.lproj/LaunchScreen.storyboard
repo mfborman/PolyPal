@@ -26,7 +26,7 @@
                                 <color key="tintColor" red="0.945455661" green="0.92706422229999996" blue="0.93374687710000004" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PolyPal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzE-lc-xd1">
-                                <rect key="frame" x="346" y="184" width="331" height="200"/>
+                                <rect key="frame" x="346.5" y="184" width="331" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="GWe-11-AxD"/>
                                 </constraints>
