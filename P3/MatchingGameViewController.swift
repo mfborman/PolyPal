@@ -11,10 +11,12 @@ import SpriteKit
 
 class MatchingGameViewController: UIViewController {
     
-    @IBAction func backButton(_ sender: Any) {
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
         playMusic(filename: "Home_Screenn.mp3")
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
+    
     var boardSize6by6 = Bool()
     
     override func viewWillLayoutSubviews() {

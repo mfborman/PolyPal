@@ -11,12 +11,11 @@ import SpriteKit
 
 class AnimalGameViewController: UIViewController {
     
-   @IBAction func returnToHomeScreen(_ segue:UIStoryboardSegue) {
-    
-    }
-    @IBAction func backButton(_ sender: Any) {
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        playMusic(filename: "Home_Screenn.mp3")
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
+    
     
     override func viewWillLayoutSubviews() {
         // Configure the view.

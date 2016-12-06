@@ -102,7 +102,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButton:" destination="Bem-m5-yye" eventType="touchUpInside" id="2Xz-mJ-0rn"/>
+                                    <action selector="backButtonPressed:" destination="Bem-m5-yye" eventType="touchUpInside" id="SmV-a1-wpd"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="5JI-Pf-dJL"/>
                                 </connections>
                             </button>
@@ -270,6 +270,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
+                                    <action selector="backButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="b1w-oG-lXG"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="BT2-mM-C9m"/>
                                 </connections>
                             </button>
@@ -284,16 +285,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="01E-Jh-Bmk">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="HO8-sz-MvI">
-                            <connections>
-                                <segue destination="8A1-Ul-amK" kind="unwind" unwindAction="returnToHomeScreen:" id="mQi-0B-0Ew"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="HO8-sz-MvI"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-                <exit id="8A1-Ul-amK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="74" y="-841"/>
         </scene>
@@ -358,6 +354,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
+                                    <action selector="backButtonPressed:" destination="S6m-9n-OYn" eventType="touchUpInside" id="G7P-7D-Uk0"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="Mac-EM-0Fv"/>
                                 </connections>
                             </button>
@@ -436,6 +433,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
+                                    <action selector="backButtonPressed:" destination="mh9-ub-Jwz" eventType="touchUpInside" id="8ap-Yb-nnE"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="z3S-Gx-Gjg"/>
                                 </connections>
                             </button>
@@ -466,7 +464,7 @@
         <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Spf-ej-AdK"/>
+        <segue reference="Mac-EM-0Fv"/>
         <segue reference="375-KJ-ypd"/>
     </inferredMetricsTieBreakers>
 </document>
