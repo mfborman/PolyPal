@@ -24,20 +24,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYS-NL-3uE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYS-NL-3uE">
                                 <rect key="frame" x="343" y="445" width="338" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parental Identification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvA-kU-RoB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Parental Identification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvA-kU-RoB">
                                 <rect key="frame" x="343" y="398" width="221" height="39"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NF3-rd-NBc">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NF3-rd-NBc">
                                 <rect key="frame" x="343" y="483" width="70" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="NeA-aa-nU0"/>
+                                    <constraint firstAttribute="width" constant="70" id="sb7-Mc-7av"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Submit">
@@ -53,11 +57,8 @@
                                     <segue destination="nuJ-47-VJY" kind="presentation" identifier="loginSubmissionSegue" id="Spf-ej-AdK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PolyPal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-DM-5he">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PolyPal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-DM-5he">
                                 <rect key="frame" x="343" y="187" width="338" height="176"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="176" id="TtC-gk-fFE"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -66,16 +67,17 @@
                         <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
                         <constraints>
-                            <constraint firstItem="SvA-kU-RoB" firstAttribute="top" secondItem="f3n-DM-5he" secondAttribute="bottom" constant="35" id="6jj-MA-HpO"/>
-                            <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="79l-8u-Zob"/>
-                            <constraint firstItem="NF3-rd-NBc" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="ZWm-jM-4x3"/>
-                            <constraint firstItem="iYS-NL-3uE" firstAttribute="centerX" secondItem="y0Q-hI-Yac" secondAttribute="centerX" id="aSF-rQ-TjV"/>
-                            <constraint firstItem="iYS-NL-3uE" firstAttribute="top" secondItem="SvA-kU-RoB" secondAttribute="bottom" constant="8" symbolic="YES" id="god-u0-8hz"/>
-                            <constraint firstItem="6ey-7O-oPy" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="293" id="ic1-lb-jsm"/>
-                            <constraint firstItem="f3n-DM-5he" firstAttribute="leading" secondItem="SvA-kU-RoB" secondAttribute="leading" id="imL-ou-cX9"/>
-                            <constraint firstItem="f3n-DM-5he" firstAttribute="trailing" secondItem="iYS-NL-3uE" secondAttribute="trailing" id="o8S-LS-JvV"/>
-                            <constraint firstItem="NF3-rd-NBc" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="8" symbolic="YES" id="uVw-yb-jKE"/>
-                            <constraint firstItem="iYS-NL-3uE" firstAttribute="width" secondItem="y0Q-hI-Yac" secondAttribute="width" multiplier="0.33" id="vWK-Hn-2Hg"/>
+                            <constraint firstItem="SvA-kU-RoB" firstAttribute="top" secondItem="f3n-DM-5he" secondAttribute="bottom" constant="35" id="83X-6D-3mL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f3n-DM-5he" secondAttribute="trailing" constant="323" id="GXn-GP-X8L"/>
+                            <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="f3n-DM-5he" secondAttribute="leading" id="S6f-9e-r9C"/>
+                            <constraint firstItem="f3n-DM-5he" firstAttribute="top" secondItem="xer-wB-Ux3" secondAttribute="bottom" constant="167" id="SDN-MP-nRg"/>
+                            <constraint firstItem="SvA-kU-RoB" firstAttribute="width" secondItem="iYS-NL-3uE" secondAttribute="width" multiplier="0.66" id="Ufq-x0-bsF"/>
+                            <constraint firstItem="NF3-rd-NBc" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="8" id="Ukk-Li-Crm"/>
+                            <constraint firstItem="iYS-NL-3uE" firstAttribute="top" secondItem="SvA-kU-RoB" secondAttribute="bottom" constant="8" id="hnX-u6-W4R"/>
+                            <constraint firstItem="iYS-NL-3uE" firstAttribute="leading" secondItem="f3n-DM-5he" secondAttribute="leading" id="kLg-qN-Q0R"/>
+                            <constraint firstItem="iYS-NL-3uE" firstAttribute="width" secondItem="y0Q-hI-Yac" secondAttribute="width" multiplier="0.33" id="umN-j3-lX1"/>
+                            <constraint firstItem="f3n-DM-5he" firstAttribute="leading" secondItem="y0Q-hI-Yac" secondAttribute="leadingMargin" constant="323" id="wm3-FJ-DDU"/>
+                            <constraint firstItem="NF3-rd-NBc" firstAttribute="leading" secondItem="f3n-DM-5he" secondAttribute="leading" id="zZJ-ty-4zB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -102,7 +104,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="Bem-m5-yye" eventType="touchUpInside" id="SmV-a1-wpd"/>
+                                    <action selector="backButton:" destination="Bem-m5-yye" eventType="touchUpInside" id="2Xz-mJ-0rn"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="5JI-Pf-dJL"/>
                                 </connections>
                             </button>
@@ -270,7 +272,6 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="b1w-oG-lXG"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="BT2-mM-C9m"/>
                                 </connections>
                             </button>
@@ -285,11 +286,16 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="01E-Jh-Bmk">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="HO8-sz-MvI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="HO8-sz-MvI">
+                            <connections>
+                                <segue destination="8A1-Ul-amK" kind="unwind" unwindAction="returnToHomeScreen:" id="mQi-0B-0Ew"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <exit id="8A1-Ul-amK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="74" y="-841"/>
         </scene>
@@ -354,7 +360,6 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="S6m-9n-OYn" eventType="touchUpInside" id="G7P-7D-Uk0"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="Mac-EM-0Fv"/>
                                 </connections>
                             </button>
@@ -433,7 +438,6 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="mh9-ub-Jwz" eventType="touchUpInside" id="8ap-Yb-nnE"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="z3S-Gx-Gjg"/>
                                 </connections>
                             </button>
@@ -464,7 +468,7 @@
         <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mac-EM-0Fv"/>
+        <segue reference="Spf-ej-AdK"/>
         <segue reference="375-KJ-ypd"/>
     </inferredMetricsTieBreakers>
 </document>
