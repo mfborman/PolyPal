@@ -30,25 +30,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvA-kU-RoB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parental Identification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvA-kU-RoB">
                                 <rect key="frame" x="343" y="398" width="221" height="39"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Parental Identification">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="Noteworthy-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NF3-rd-NBc">
-                                <rect key="frame" x="343" y="483" width="70" height="50.5"/>
+                                <rect key="frame" x="343" y="483" width="70" height="51"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Submit">
                                             <attributes>
-                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <font key="NSFont" size="24" name="Noteworthy-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -59,8 +53,15 @@
                                     <segue destination="nuJ-47-VJY" kind="presentation" identifier="loginSubmissionSegue" id="Spf-ej-AdK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PolyPal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-DM-5he">
+                                <rect key="frame" x="343" y="187" width="338" height="176"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="100"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
                         <constraints>
                             <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="79l-8u-Zob"/>
@@ -78,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67s-Jc-UiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1042" y="-858"/>
+            <point key="canvasLocation" x="-1042.3828125" y="-858.59375"/>
         </scene>
         <!--Alphabet Game View Controller-->
         <scene sceneID="ihu-tX-jMG">
@@ -180,14 +181,14 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="884-mp-rHl">
                                 <rect key="frame" x="986" y="738" width="30" height="30"/>
                                 <state key="normal" title="X">
-                                    <color key="titleColor" red="1" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="clearData:" destination="nuJ-47-VJY" eventType="touchUpInside" id="owl-Bt-Peq"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aBX-AX-5nB" firstAttribute="centerY" secondItem="csP-qZ-8zB" secondAttribute="centerY" multiplier="0.5" id="9oU-Ci-Uho"/>

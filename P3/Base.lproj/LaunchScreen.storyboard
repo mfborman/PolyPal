@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,12 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jDc-Qr-G6N">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jDc-Qr-G6N">
+                                <rect key="frame" x="347" y="424" width="331" height="2"/>
                                 <color key="tintColor" red="0.945455661" green="0.92706422229999996" blue="0.93374687710000004" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PolyPal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzE-lc-xd1">
+                                <rect key="frame" x="346" y="184" width="331" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="wp8-Av-uOv"/>
+                                    <constraint firstAttribute="height" constant="200" id="GWe-11-AxD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="100"/>
                                 <color key="textColor" red="1" green="0.97595625830645383" blue="0.9866016454494122" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,11 +37,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.3839555509" blue="0.37300501619999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fzE-lc-xd1" firstAttribute="leading" secondItem="jDc-Qr-G6N" secondAttribute="leading" id="51t-pg-1CL"/>
-                            <constraint firstItem="fzE-lc-xd1" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="164" id="Bjz-fc-a7K"/>
-                            <constraint firstItem="jDc-Qr-G6N" firstAttribute="top" secondItem="fzE-lc-xd1" secondAttribute="bottom" constant="40" id="CpR-P1-Hcq"/>
-                            <constraint firstItem="fzE-lc-xd1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UdZ-sh-PTu"/>
-                            <constraint firstItem="fzE-lc-xd1" firstAttribute="trailing" secondItem="jDc-Qr-G6N" secondAttribute="trailing" id="ldJ-hF-Rwq"/>
+                            <constraint firstItem="fzE-lc-xd1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OBz-lj-6Qk"/>
+                            <constraint firstItem="fzE-lc-xd1" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="164" id="btq-Ru-H3s"/>
+                            <constraint firstItem="jDc-Qr-G6N" firstAttribute="top" secondItem="fzE-lc-xd1" secondAttribute="bottom" constant="40" id="wIZ-iN-QTX"/>
                         </constraints>
                     </view>
                 </viewController>
