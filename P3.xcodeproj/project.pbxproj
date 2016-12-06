@@ -169,10 +169,7 @@
 		57EDB4F51DC2A9140074E85C /* P3 */ = {
 			isa = PBXGroup;
 			children = (
-				576B1F1F1DF64466007546FB /* winter.mp3 */,
-				576AB1181DF37E93006F8ABE /* Home_Screen.mp3 */,
-				576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */,
-				576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */,
+				A25D298D1DF6B3380085125F /* BackgroundMusic */,
 				A21D1A171DCBC92A0028C430 /* Alphabet Game */,
 				A21D1A061DCA90560028C430 /* Animal Game */,
 				A21D1A081DCA90810028C430 /* Shape Game */,
@@ -275,6 +272,17 @@
 				A2993E4F1DF5EDC4004D18C1 /* SelectAlphabetGameViewController.swift */,
 			);
 			name = "Alphabet Game";
+			sourceTree = "<group>";
+		};
+		A25D298D1DF6B3380085125F /* BackgroundMusic */ = {
+			isa = PBXGroup;
+			children = (
+				576B1F1F1DF64466007546FB /* winter.mp3 */,
+				576AB1181DF37E93006F8ABE /* Home_Screen.mp3 */,
+				576AB1161DF376B3006F8ABE /* Animal_Game.mp3 */,
+				576AB1141DF376AD006F8ABE /* Shape_Game.mp3 */,
+			);
+			name = BackgroundMusic;
 			sourceTree = "<group>";
 		};
 		A2C858D91DF61E3900EB2755 /* Number Game */ = {
