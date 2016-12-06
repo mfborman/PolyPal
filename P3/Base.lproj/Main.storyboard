@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XZd-8G-SQk">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,74 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="fvE-kd-myJ">
+            <objects>
+                <viewController id="XZd-8G-SQk" customClass="LoginViewController" customModule="P3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xer-wB-Ux3"/>
+                        <viewControllerLayoutGuide type="bottom" id="6ey-7O-oPy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y0Q-hI-Yac">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYS-NL-3uE">
+                                <rect key="frame" x="343" y="445" width="338" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvA-kU-RoB">
+                                <rect key="frame" x="343" y="398" width="221" height="39"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Parental Identification">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="Noteworthy-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NF3-rd-NBc">
+                                <rect key="frame" x="343" y="483" width="70" height="50.5"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Submit">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="24" name="Noteworthy-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="presentation" identifier="loginSubmissionSegue" id="Spf-ej-AdK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
+                        <constraints>
+                            <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="y0Q-hI-Yac" secondAttribute="leading" constant="343" id="TY0-mx-KPw"/>
+                            <constraint firstItem="NF3-rd-NBc" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="ZWm-jM-4x3"/>
+                            <constraint firstItem="iYS-NL-3uE" firstAttribute="centerX" secondItem="y0Q-hI-Yac" secondAttribute="centerX" id="aSF-rQ-TjV"/>
+                            <constraint firstItem="iYS-NL-3uE" firstAttribute="top" secondItem="SvA-kU-RoB" secondAttribute="bottom" constant="8" symbolic="YES" id="god-u0-8hz"/>
+                            <constraint firstItem="6ey-7O-oPy" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="293" id="ic1-lb-jsm"/>
+                            <constraint firstItem="NF3-rd-NBc" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="8" symbolic="YES" id="uVw-yb-jKE"/>
+                            <constraint firstItem="iYS-NL-3uE" firstAttribute="width" secondItem="y0Q-hI-Yac" secondAttribute="width" multiplier="0.33" id="vWK-Hn-2Hg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="parentTextField" destination="iYS-NL-3uE" id="wgm-06-Bhj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="67s-Jc-UiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1042" y="-858"/>
+        </scene>
         <!--Alphabet Game View Controller-->
         <scene sceneID="ihu-tX-jMG">
             <objects>
@@ -364,7 +432,7 @@
         <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5JI-Pf-dJL"/>
+        <segue reference="Spf-ej-AdK"/>
         <segue reference="375-KJ-ypd"/>
     </inferredMetricsTieBreakers>
 </document>

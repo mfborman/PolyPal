@@ -38,6 +38,7 @@
 		A21D1A161DCBC9250028C430 /* AlphabetGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21D1A151DCBC9250028C430 /* AlphabetGameViewController.swift */; };
 		A222F9371DCA4E0A00AED002 /* animalVictorySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A222F9361DCA4E0A00AED002 /* animalVictorySound.mp3 */; };
 		A250A03E1DDAADDD009D722D /* SegueToAnimalGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A250A03D1DDAADDD009D722D /* SegueToAnimalGame.swift */; };
+		A25D298C1DF6923C0085125F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D298B1DF6923C0085125F /* LoginViewController.swift */; };
 		A2993E501DF5EDC4004D18C1 /* SelectAlphabetGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2993E4F1DF5EDC4004D18C1 /* SelectAlphabetGameViewController.swift */; };
 		A2993E521DF6113E004D18C1 /* NumberGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2993E511DF6113E004D18C1 /* NumberGameViewController.swift */; };
 		A2993E541DF612C4004D18C1 /* NumberGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2993E531DF612C4004D18C1 /* NumberGameScene.swift */; };
@@ -106,6 +107,7 @@
 		A21D1A151DCBC9250028C430 /* AlphabetGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetGameViewController.swift; sourceTree = "<group>"; };
 		A222F9361DCA4E0A00AED002 /* animalVictorySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = animalVictorySound.mp3; sourceTree = "<group>"; };
 		A250A03D1DDAADDD009D722D /* SegueToAnimalGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueToAnimalGame.swift; sourceTree = "<group>"; };
+		A25D298B1DF6923C0085125F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A2993E4F1DF5EDC4004D18C1 /* SelectAlphabetGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAlphabetGameViewController.swift; sourceTree = "<group>"; };
 		A2993E511DF6113E004D18C1 /* NumberGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberGameViewController.swift; sourceTree = "<group>"; };
 		A2993E531DF612C4004D18C1 /* NumberGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberGameScene.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				57EDB5011DC2A9140074E85C /* Assets.xcassets */,
 				57EDB5061DC2A9140074E85C /* Info.plist */,
 				576AB1201DF38B29006F8ABE /* HomeScreenViewController.swift */,
+				A25D298B1DF6923C0085125F /* LoginViewController.swift */,
 			);
 			path = P3;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				57EDB4FB1DC2A9140074E85C /* AnimalGameScene.swift in Sources */,
 				576AB1211DF38B29006F8ABE /* HomeScreenViewController.swift in Sources */,
 				57EDB4FD1DC2A9140074E85C /* AnimalGameViewController.swift in Sources */,
+				A25D298C1DF6923C0085125F /* LoginViewController.swift in Sources */,
 				A21D1A051DCA8F220028C430 /* MatchingGameViewController.swift in Sources */,
 				A2A27EFB1DD22BF600107E3F /* GameBoard.swift in Sources */,
 				A2DD64B11DC2FD0000D0C073 /* ShapeGameViewController.swift in Sources */,
