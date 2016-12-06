@@ -24,10 +24,10 @@ class SelectAlphabetGameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "segueToLetterGame") {
-            let matchingGameVC = (segue.destination as! AlphabetGameViewController)
+            //let matchingGameVC = (segue.destination as! AlphabetGameViewController)
             
         } else if (segue.identifier == "segueToNumberGame") {
-            let matchingGameVC = (segue.destination as! NumberGameViewController)
+            //let matchingGameVC = (segue.destination as! NumberGameViewController)
         }
     }
     

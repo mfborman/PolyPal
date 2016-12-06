@@ -24,7 +24,8 @@ class NumberGameScene: SKScene {
     var numberOptions: [SKSpriteNode]
     var numberWordLabel = SKLabelNode()
     var correctNumber = String()
-    let labelFont = UIFont(name: "Noteworthy-bold", size: 200)
+    var labelFontSize: CGFloat = 150
+    let labelFont: UIFont
     
     let correctNumberAnimationConstant = 0.5
 
@@ -37,6 +38,7 @@ class NumberGameScene: SKScene {
     
     override init(size: CGSize) {
         
+        labelFont = UIFont(name: "Noteworthy-bold", size: labelFontSize)!
         digits = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Zero"]
         numbers = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
         numbersToUse = []
@@ -95,14 +97,14 @@ class NumberGameScene: SKScene {
             
             // Display Number Name
             self.numberWordLabel.text = self.correctNumber
-            self.numberWordLabel.fontName = self.labelFont?.fontName
-            self.numberWordLabel.fontSize = (self.labelFont?.pointSize)!
+            self.numberWordLabel.fontName = self.labelFont.fontName
+            self.numberWordLabel.fontSize = self.labelFontSize
             self.numberWordLabel.position = CGPoint(x: self.screenWidth/2, y: self.screenHeight*(3/5))
             self.numberWordLabel.zPosition = cardPriority.standard
             
-            // Animate number onto screen with pop-bounce
-            
+            // Animate word onto screen with pop-bounce
             self.background.addChild(self.numberWordLabel)
+
         }
     }
     
@@ -162,11 +164,9 @@ class NumberGameScene: SKScene {
 
             // Handle Chalkboard removal
             let clearOldInfo = SKAction.group([handleWord, handleCorrectNumber])
-            self.run(SKAction.sequence([clearOldInfo, self.removeBackgroundChildren(), self.generateGameScreen()]))
             
-            // Pop numbers into new numbers
-            
-            // Pop up wordName
+            // Reset chalkboard and add new numbers
+            self.run(SKAction.sequence([clearOldInfo, SKAction.wait(forDuration: 0.9), self.removeBackgroundChildren(), self.generateGameScreen()]))
         }
     }
     

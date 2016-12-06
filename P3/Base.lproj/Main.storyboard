@@ -347,7 +347,22 @@
                     <view key="view" contentMode="scaleToFill" id="cJj-DM-UpO" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9g6-ll-Bie">
+                                <rect key="frame" x="20" y="648" width="154" height="100"/>
+                                <state key="normal" backgroundImage="back_btn"/>
+                                <connections>
+                                    <segue destination="nuJ-47-VJY" kind="presentation" id="Mac-EM-0Fv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9g6-ll-Bie" firstAttribute="height" secondItem="cJj-DM-UpO" secondAttribute="height" multiplier="0.16" id="5ne-0c-MBI"/>
+                            <constraint firstItem="tQo-oy-gzR" firstAttribute="top" secondItem="9g6-ll-Bie" secondAttribute="bottom" constant="20" id="Min-aP-P1P"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="9g6-ll-Bie" secondAttribute="leading" id="ZJV-De-Czv"/>
+                            <constraint firstItem="9g6-ll-Bie" firstAttribute="width" secondItem="cJj-DM-UpO" secondAttribute="width" multiplier="0.16" id="dTK-52-ni2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QuS-9O-SFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -445,7 +460,7 @@
         <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Spf-ej-AdK"/>
+        <segue reference="Mac-EM-0Fv"/>
         <segue reference="375-KJ-ypd"/>
     </inferredMetricsTieBreakers>
 </document>
