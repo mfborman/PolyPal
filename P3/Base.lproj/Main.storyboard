@@ -264,6 +264,7 @@
                                 <rect key="frame" x="20" y="648" width="154" height="100"/>
                                 <state key="normal" backgroundImage="back_btn"/>
                                 <connections>
+                                    <action selector="backButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="9ud-sM-yJW"/>
                                     <segue destination="nuJ-47-VJY" kind="presentation" id="BT2-mM-C9m"/>
                                 </connections>
                             </button>
@@ -462,6 +463,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="375-KJ-ypd"/>
-        <segue reference="z3S-Gx-Gjg"/>
+        <segue reference="BT2-mM-C9m"/>
     </inferredMetricsTieBreakers>
 </document>
