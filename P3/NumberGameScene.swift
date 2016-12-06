@@ -58,7 +58,7 @@ class NumberGameScene: SKScene {
         addChild(background)
         
         // Play Music
-        playMusic(filename: "Alphabet_Gamee")
+        playMusic(filename: "Alphabet_Gamee.mp3")
         
         self.run(generateGameScreen())
         
