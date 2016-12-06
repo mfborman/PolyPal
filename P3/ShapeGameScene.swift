@@ -158,7 +158,9 @@ class ShapeGameScene: SKScene {
                 touchedNodes[0].run(returnToInitialState(sprite: touchedNodes[0] as! SKSpriteNode))
                 
                 if correctMatches.count == 4 {
-                    self.run(displayVictoryCard())
+                    //self.run(SKAction.wait(forDuration: 0.8))
+                    //self.run(displayVictoryCard())
+                    self.run(SKAction.sequence([SKAction.wait(forDuration: 1.5), displayVictoryCard()]))
                     print("Winner! You have matched all the shapes with their respective holes")
                 }
                 
@@ -308,7 +310,8 @@ class ShapeGameScene: SKScene {
         let spin = SKAction.rotate(byAngle: 2.2, duration: animationTime)
         let fall = SKAction.scale(by: 0.1, duration: animationTime)
         let leave = SKAction.removeFromParent()
-        let spinFall = SKAction.group([spin, fall])
+        let sink = SKAction.fadeOut(withDuration: animationTime)
+        let spinFall = SKAction.group([spin, fall, sink])
         let coverAndFall = SKAction.sequence([cover, spinFall, leave])
         shape.run(coverAndFall)
     }
@@ -333,6 +336,8 @@ class ShapeGameScene: SKScene {
         // Execute animations
         let returnShape = SKAction.group([followLine, flip])
         let finalSequence = SKAction.sequence([returnShape, returnToInitialState(sprite: selectedNode)])
+        
+        
         
         selectedNode.run(cover)
         selectedNode.run(finalSequence)
