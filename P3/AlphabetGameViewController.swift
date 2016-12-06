@@ -9,6 +9,10 @@ import UIKit
 import SpriteKit
 class AlphabetGameViewController: UIViewController {
     
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+    }
     override func viewWillLayoutSubviews() {
         // Configure the view.
         let skView = self.view as! SKView
