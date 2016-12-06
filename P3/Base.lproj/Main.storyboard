@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nuJ-47-VJY">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -285,22 +285,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zal-eK-ysO">
-                                <rect key="frame" x="243" y="331" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zal-eK-ysO">
+                                <rect key="frame" x="-21" y="96" width="575" height="500"/>
+                                <state key="normal" image="alphabet_option"/>
                                 <connections>
                                     <segue destination="Bem-m5-yye" kind="presentation" identifier="segueToLetterGame" id="0vX-nJ-Ivt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-dl-fab">
-                                <rect key="frame" x="719" y="331" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-dl-fab">
+                                <rect key="frame" x="455" y="96" width="575" height="500"/>
+                                <state key="normal" image="numbers_option"/>
                                 <connections>
                                     <segue destination="S6m-9n-OYn" kind="presentation" identifier="segueToNumberGame" id="bwE-T9-cv4"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.81310056200686665" green="1" blue="0.86492038952080186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dW6-dl-fab" firstAttribute="leading" secondItem="zal-eK-ysO" secondAttribute="trailing" id="3JH-E0-e7W"/>
                             <constraint firstItem="dW6-dl-fab" firstAttribute="leading" secondItem="zal-eK-ysO" secondAttribute="trailing" id="Byf-7L-6tB"/>
@@ -353,11 +353,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alphabet_option" width="575" height="500"/>
         <image name="animals_btn" width="450" height="450"/>
         <image name="back_btn" width="100" height="100"/>
         <image name="brain_btn" width="450" height="450"/>
         <image name="four_by_four" width="550" height="630"/>
         <image name="letters_btn" width="450" height="450"/>
+        <image name="numbers_option" width="575" height="500"/>
         <image name="shapes_btn" width="450" height="450"/>
         <image name="six_by_six" width="550" height="630"/>
     </resources>

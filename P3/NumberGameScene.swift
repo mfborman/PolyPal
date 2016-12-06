@@ -24,6 +24,7 @@ class NumberGameScene: SKScene {
     var numberOptions: [SKSpriteNode]
     var numberWordLabel = SKLabelNode()
     var correctNumber = String()
+    let labelFont = UIFont(name: "Noteworthy-bold", size: 200)
     
     let correctNumberAnimationConstant = 0.5
 
@@ -39,8 +40,8 @@ class NumberGameScene: SKScene {
         digits = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Zero"]
         numbers = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
         numbersToUse = []
-        numberOptions = []
         spritesToUse = []
+        numberOptions = []
         
         super.init(size: size)//cover all paths
         
@@ -54,36 +55,63 @@ class NumberGameScene: SKScene {
         background.zPosition = cardPriority.background
         addChild(background)
         
-        let labelFont = UIFont(name: "Noteworthy-bold", size: 200)
-        let numberOfChoices = 5
-
-        // Select 5 random numbers to use
-        repeat {
-            let rand = Int(arc4random_uniform(UInt32(numbers.count)))
-            if !numbersToUse.contains(numbers[rand]) {
-                numbersToUse.append(numbers[rand])
+        self.run(generateGameScreen())
+        
+    }
+    
+    func generateGameScreen() -> SKAction {
+        return SKAction.run {
+            let numberOfChoices = 5
+            
+            self.numbersToUse = []
+            self.spritesToUse = []
+            self.numberWordLabel = SKLabelNode()
+            
+            // Select 5 random numbers to use
+            repeat {
+                let rand = Int(arc4random_uniform(UInt32(self.numbers.count)))
+                if !self.numbersToUse.contains(self.numbers[rand]) {
+                    self.numbersToUse.append(self.numbers[rand])
+                }
+            } while self.numbersToUse.count < numberOfChoices
+            
+            // Select a the "winning" number
+            self.correctNumber = self.numbersToUse[Int(arc4random_uniform(UInt32(numberOfChoices)))]
+            print(self.correctNumber)
+            print(self.numbersToUse.count)
+            for i in 0..<self.numbersToUse.count {
+                let number = Number(spriteName: self.numbersToUse[i])
+                number.position.x = self.screenWidth/6 * CGFloat(i+1)
+                number.position.y = (i%2==0) ? self.screenHeight*(7/24) : self.screenHeight/6
+                number.zPosition = cardPriority.standard
+                number.name = self.numbersToUse[i]
+                self.spritesToUse.append(number)
+                
+                // Animate number onto screen with pop-bounce
+                self.background.addChild(number)
+                let enterScene = self.popUpBounce(node: self.spritesToUse[self.spritesToUse.count-1])
+                self.spritesToUse[self.spritesToUse.count-1].run(enterScene)
             }
-        } while numbersToUse.count < numberOfChoices
-        
-        // Select a the "winning" number
-        correctNumber = numbersToUse[Int(arc4random_uniform(UInt32(numberOfChoices)))]
-        
-        // Display Number Name
-        numberWordLabel.text = correctNumber
-        numberWordLabel.fontName = labelFont?.fontName
-        numberWordLabel.fontSize = (labelFont?.pointSize)!
-        numberWordLabel.position = CGPoint(x: screenWidth/2, y: screenHeight*(3/5))
-        numberWordLabel.zPosition = cardPriority.standard
-        background.addChild(numberWordLabel)
-        
-        for i in 0..<numbersToUse.count {
-            let number = Number(spriteName: numbersToUse[i])
-            number.position.x = screenWidth/6 * CGFloat(i+1)
-            number.position.y = (i%2==0) ? screenHeight*(7/24) : screenHeight/6
-            number.zPosition = cardPriority.standard
-            number.name = numbersToUse[i]
-            spritesToUse.append(number)
-            background.addChild(number)
+            
+            // Display Number Name
+            self.numberWordLabel.text = self.correctNumber
+            self.numberWordLabel.fontName = self.labelFont?.fontName
+            self.numberWordLabel.fontSize = (self.labelFont?.pointSize)!
+            self.numberWordLabel.position = CGPoint(x: self.screenWidth/2, y: self.screenHeight*(3/5))
+            self.numberWordLabel.zPosition = cardPriority.standard
+            
+            // Animate number onto screen with pop-bounce
+            
+            self.background.addChild(self.numberWordLabel)
+        }
+    }
+    
+    func popUpBounce(node: SKSpriteNode) -> SKAction {
+        return SKAction.run {
+            let hide = SKAction.scale(to: 0.0, duration: 0.0)
+            let pop = SKAction.scale(to: 1.3, duration: self.correctNumberAnimationConstant/3)
+            let settle = SKAction.scale(to: 1.0, duration: self.correctNumberAnimationConstant/3)
+            node.run(SKAction.sequence([hide, pop, settle]))
         }
     }
     
@@ -118,6 +146,12 @@ class NumberGameScene: SKScene {
         }
     }
     
+    func removeBackgroundChildren() -> SKAction {
+        return SKAction.run {
+            self.background.removeAllChildren()
+        }
+    }
+    
     func handleCorrectAnswer() -> SKAction {
         return SKAction.run {
             // Move wordName to left, pop and fade
@@ -128,12 +162,9 @@ class NumberGameScene: SKScene {
 
             // Handle Chalkboard removal
             let clearOldInfo = SKAction.group([handleWord, handleCorrectNumber])
-            self.run(clearOldInfo)
+            self.run(SKAction.sequence([clearOldInfo, self.removeBackgroundChildren(), self.generateGameScreen()]))
             
-            // Pop 5 new numbers onto chalkboard
-            
-            
-            // Move numbers down to green
+            // Pop numbers into new numbers
             
             // Pop up wordName
         }
