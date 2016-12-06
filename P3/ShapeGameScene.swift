@@ -344,7 +344,7 @@ class ShapeGameScene: SKScene {
         return SKAction.run {
             
             // Display victory card
-            let victoryCard = SKSpriteNode(imageNamed: "matchingGameVictory")
+            let victoryCard = SKSpriteNode(imageNamed: "shapeGameVictory")
             let cardSizeRatio = self.frame.size.height/self.frame.size.width
             let cardWidth = self.frame.size.width*(2/3)
             let cardHeight = cardWidth*cardSizeRatio
