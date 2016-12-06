@@ -47,6 +47,9 @@ class MatchingGameScene: SKScene {
         // Create the game board
         let gameBoard = GameBoard(width: screenWidth, height: screenHeight, boardSize6by6: boardSize6by6)
         
+        // Play background music
+        playMusic(filename: "Matching_Game.mp3")
+        
         // Create cards in array
         while cardsToGenerate.count < uniqueCardCount {
             
@@ -57,6 +60,8 @@ class MatchingGameScene: SKScene {
             cardsToGenerate.append(imageName)
             
         }
+        
+        
         for i in 0..<cardsToGenerate.count {
         
             // Set up card

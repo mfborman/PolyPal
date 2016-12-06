@@ -39,6 +39,6 @@ class HomeScreenViewController: UIViewController {
     */
     
     func startMusic(){
-        playMusic(filename: "Home_Screen.mp3");//NEW
+        playMusic(filename: "Home_Screenn.mp3");//NEW
     }
 }

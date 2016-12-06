@@ -58,6 +58,9 @@ class AnimalGameScene: SKScene {
         barnSprite.zPosition = depth.barn
         self.background.addChild(barnSprite)
 
+        // Play background music
+        playMusic(filename: "Animal_Gamee.mp3")
+        
         // Add animal sprites
         for i in 0..<onScreenAnimalCount {
             var imageName: String
@@ -95,8 +98,6 @@ class AnimalGameScene: SKScene {
             let spawnAction = SKAction.sequence([minimize, delay, grow, shrink, playSound])
             animalSprite.run(spawnAction)
             
-            // Play background music
-            playMusic(filename: "Animal_Game.mp3")
         }
 
         // Add name label for target animal
