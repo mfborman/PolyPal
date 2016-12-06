@@ -214,7 +214,6 @@ class AlphabetGameScene: SKScene {
         
         if nodeIsQuizLetter(node: selectedNode) && !(selectedNode as! Letter).correctPlacement {
             
-            selectedNode.run(SKAction.scale(to: 1.2, duration: 0.05))
             selectedNode.position = CGPoint(x: position.x+translation.x, y: position.y+translation.y)
         }
     }
@@ -225,13 +224,16 @@ class AlphabetGameScene: SKScene {
         
         if touchedNode is SKSpriteNode {
             selectedNode = touchedNode as! SKSpriteNode
+            if nodeIsQuizLetter(node: selectedNode) && !(selectedNode as! Letter).correctPlacement {
+                selectedNode.run(SKAction.scale(to: 1.2, duration: 0.05))
+            }
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
         let positionInScene = touch.location(in: self)
-        
+
         selectNodeForTouch(positionInScene)
         
     }
@@ -248,7 +250,6 @@ class AlphabetGameScene: SKScene {
     func turnLettersGold() -> SKAction {
         return SKAction.run {
             let increment = 0.04
-            let totalTime = increment * Double(self.correctlyPlacedLetters.count)
             for i in 0..<self.correctlyPlacedLetters.count {
                 let imageName = self.correctlyPlacedLetters[i].letter + "3"
                 let delay = SKAction.wait(forDuration: increment * Double(i))
