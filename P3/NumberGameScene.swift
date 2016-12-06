@@ -22,6 +22,9 @@ class NumberGameScene: SKScene {
     var spritesToUse: [SKSpriteNode]
     var numbers: [String]
     var numberOptions: [SKSpriteNode]
+    var stars: [SKSpriteNode]
+    var starsToWin = Int()
+    var currentStars = Int()
     var numberWordLabel = SKLabelNode()
     var correctNumber = String()
     var labelFontSize: CGFloat = 150
@@ -44,18 +47,34 @@ class NumberGameScene: SKScene {
         numbersToUse = []
         spritesToUse = []
         numberOptions = []
+        stars = []
         
         super.init(size: size)//cover all paths
         
         screenSize = self.frame.size
         screenWidth = screenSize.width
         screenHeight = screenSize.height
+        starsToWin = 10
+        currentStars = 0
 
         background.name = "background"
         background.size = self.frame.size
         background.anchorPoint = CGPoint.zero
         background.zPosition = cardPriority.background
         addChild(background)
+        
+        // Add stars to chalkboard
+        for i in 0..<starsToWin {
+            let star = SKSpriteNode(imageNamed: "gray_star")
+            star.position.y = screenHeight*(20/21)
+            star.position.x = (screenWidth/11)*CGFloat(i+1)
+            star.size.height = screenHeight/30
+            star.size.width = star.size.height
+            star.zPosition = cardPriority.moving
+            star.name = "star"
+            stars.append(star)
+            self.background.addChild(star)
+        }
         
         // Play Music
         playMusic(filename: "Alphabet_Gamee.mp3")
@@ -129,7 +148,8 @@ class NumberGameScene: SKScene {
 
             let moveAndResize = SKAction.group([moveLabelLeft, resize])
             let remove = SKAction.group([fadeOut, blowUp])
-            let moveAndRemove = SKAction.sequence([moveAndResize, remove])
+            let pause = SKAction.wait(forDuration: 0.2)
+            let moveAndRemove = SKAction.sequence([moveAndResize, pause, remove])
             self.numberWordLabel.run(moveAndRemove)
         }
     }
@@ -142,18 +162,37 @@ class NumberGameScene: SKScene {
             while self.spritesToUse[index].name != self.correctNumber {
                 index += 1
             }
-            let blowUp = SKAction.scale(to: 3.0, duration: self.correctNumberAnimationConstant)
-            let fadeOut = SKAction.fadeOut(withDuration: self.correctNumberAnimationConstant)
+            let shrink = SKAction.scale(to: 0.01, duration: self.correctNumberAnimationConstant*(2/3))
+            let hitStar = SKAction.move(to: self.stars[self.currentStars].position, duration: self.correctNumberAnimationConstant*(2/3))
             
-            let remove = SKAction.group([fadeOut, blowUp])
-            let moveAndRemove = SKAction.sequence([moveToChalkboard, remove])
+            let remove = SKAction.group([hitStar, shrink])
+            let pause = SKAction.wait(forDuration: 0.2)
+            let moveAndRemove = SKAction.sequence([moveToChalkboard, pause, remove])
             self.spritesToUse[index].run(moveAndRemove)
+        }
+    }
+    
+    func animateObtainedStar() -> SKAction {
+        return SKAction.run {
+            let spin = SKAction.rotate(byAngle: degToRad(360.0), duration: 0.4)
+            let pop = SKAction.scale(to: 1.2, duration: 0.2)
+            let rise = SKAction.moveTo(y: self.stars[self.currentStars].position.y+self.stars[self.currentStars].size.height, duration: 0.2)
+            let turnGold = SKAction.setTexture(SKTexture(imageNamed: "gold_star"))
+            let sink = SKAction.scale(to: 1.0, duration: 0.2)
+            let fall = SKAction.moveTo(y: self.stars[self.currentStars].position.y, duration: 0.2)
+            
+            let up = SKAction.group([pop, rise])
+            let down = SKAction.group([sink, fall])
+            let moveStar = SKAction.sequence([up, turnGold, down])
+            let finalAnimation = SKAction.group([spin, moveStar])
+            self.stars[self.currentStars].run(finalAnimation)
+            self.currentStars += 1
         }
     }
     
     func removeBackgroundChildren() -> SKAction {
         return SKAction.run {
-            self.background.removeAllChildren()
+            self.background.children.filter { $0.name != "star" }.forEach { $0.removeFromParent() }
         }
     }
     
@@ -165,11 +204,14 @@ class NumberGameScene: SKScene {
             // Move correct number onto chalkboard, pop and fade
             let handleCorrectNumber = self.moveCorrectLetter()
 
+            // Hit star
+            let hitStar = SKAction.sequence([handleCorrectNumber, SKAction.wait(forDuration: self.correctNumberAnimationConstant*2), self.animateObtainedStar()])
+            
             // Handle Chalkboard removal
-            let clearOldInfo = SKAction.group([handleWord, handleCorrectNumber])
+            let clearOldInfo = SKAction.group([handleWord, hitStar])
             
             // Reset chalkboard and add new numbers
-            self.run(SKAction.sequence([clearOldInfo, SKAction.wait(forDuration: 0.9), self.removeBackgroundChildren(), self.generateGameScreen()]))
+            self.run(SKAction.sequence([clearOldInfo, SKAction.wait(forDuration: 0.3) , self.removeBackgroundChildren(), self.generateGameScreen()]))
         }
     }
     
