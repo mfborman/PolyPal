@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XZd-8G-SQk">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XZd-8G-SQk">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,9 +53,11 @@
                                     <segue destination="nuJ-47-VJY" kind="presentation" identifier="loginSubmissionSegue" id="Spf-ej-AdK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PolyPal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-DM-5he">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PolyPal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-DM-5he">
                                 <rect key="frame" x="343" y="187" width="338" height="176"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="TtC-gk-fFE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -64,11 +66,14 @@
                         <color key="backgroundColor" red="1" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
                         <constraints>
+                            <constraint firstItem="SvA-kU-RoB" firstAttribute="top" secondItem="f3n-DM-5he" secondAttribute="bottom" constant="35" id="6jj-MA-HpO"/>
                             <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="79l-8u-Zob"/>
                             <constraint firstItem="NF3-rd-NBc" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="ZWm-jM-4x3"/>
                             <constraint firstItem="iYS-NL-3uE" firstAttribute="centerX" secondItem="y0Q-hI-Yac" secondAttribute="centerX" id="aSF-rQ-TjV"/>
                             <constraint firstItem="iYS-NL-3uE" firstAttribute="top" secondItem="SvA-kU-RoB" secondAttribute="bottom" constant="8" symbolic="YES" id="god-u0-8hz"/>
                             <constraint firstItem="6ey-7O-oPy" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="293" id="ic1-lb-jsm"/>
+                            <constraint firstItem="f3n-DM-5he" firstAttribute="leading" secondItem="SvA-kU-RoB" secondAttribute="leading" id="imL-ou-cX9"/>
+                            <constraint firstItem="f3n-DM-5he" firstAttribute="trailing" secondItem="iYS-NL-3uE" secondAttribute="trailing" id="o8S-LS-JvV"/>
                             <constraint firstItem="NF3-rd-NBc" firstAttribute="top" secondItem="iYS-NL-3uE" secondAttribute="bottom" constant="8" symbolic="YES" id="uVw-yb-jKE"/>
                             <constraint firstItem="iYS-NL-3uE" firstAttribute="width" secondItem="y0Q-hI-Yac" secondAttribute="width" multiplier="0.33" id="vWK-Hn-2Hg"/>
                         </constraints>
@@ -461,7 +466,7 @@
         <image name="six_by_six" width="550" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Spf-ej-AdK"/>
         <segue reference="375-KJ-ypd"/>
-        <segue reference="5JI-Pf-dJL"/>
     </inferredMetricsTieBreakers>
 </document>
