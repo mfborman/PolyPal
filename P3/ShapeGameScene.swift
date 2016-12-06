@@ -51,7 +51,7 @@ class ShapeGameScene: SKScene {
         // 2 - add the background
         self.addChild(background)
         // Play Music
-        playMusic(filename: "Shape_Game.mp3")
+        playMusic(filename: "winter.mp3")
         
         
         //Generates the shape sprites on the screen
