@@ -61,7 +61,7 @@ class AlphabetGameScene: SKScene {
         self.addChild(background)
         
         // Play Music
-        playMusic(filename: "Alphabet_Gamee")
+        playMusic(filename: "Alphabet_Gamee.mp3")
         
         // Select random letters for the missing letter list
         repeat {
