@@ -63,7 +63,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
                         <constraints>
-                            <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="y0Q-hI-Yac" secondAttribute="leading" constant="343" id="TY0-mx-KPw"/>
+                            <constraint firstItem="SvA-kU-RoB" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="79l-8u-Zob"/>
                             <constraint firstItem="NF3-rd-NBc" firstAttribute="leading" secondItem="iYS-NL-3uE" secondAttribute="leading" id="ZWm-jM-4x3"/>
                             <constraint firstItem="iYS-NL-3uE" firstAttribute="centerX" secondItem="y0Q-hI-Yac" secondAttribute="centerX" id="aSF-rQ-TjV"/>
                             <constraint firstItem="iYS-NL-3uE" firstAttribute="top" secondItem="SvA-kU-RoB" secondAttribute="bottom" constant="8" symbolic="YES" id="god-u0-8hz"/>
